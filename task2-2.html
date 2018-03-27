@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> the first html</title>
+    <style type="text/css">
+    .logo{
+        height:80px;
+        width: 200px;
+        float: left;
+    }
+    .links{
+        float:right;
+        margin-right: 10px;
+    }
+    .links li{
+        float: left;
+        margin-left: 14px;
+        list-style: none;
+    }
+    .links li a{
+        text-decoration: none;
+        color: white;
+        font-size: 10px;
+    }
+    
+    .main{
+        clear: both;
+    }
+    .header{
+        /*clear: both;*/
+        background-color: #515151;
+        float: left;
+        width:97%;/*如果不设置float,此div不能包裹住float元素*/
+        margin:0 20px 20px 20px;
+    }
+    h4,h5{
+        color: gray;
+    }
+    .main p{
+        line-height: 30px;
+        font-size: 15px;
+    }
+    .embed{
+        display: block;
+        height:150px;
+        width: 300px;
+    }
+    .image{
+        border: 1px solid black;
+        width:125px;
+        height:125px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .image img{
+        width:100px;
+        height:100px;
+    }
+    table{
+       /* border:1px;/*不知道为啥不管用???*/
+       width: 100%;
+       table-layout: fixed;/*列等宽*/
+       border-collapse:collapse;/*消除单元格间距*/
+    }
+    table th{
+        background-color: #515151;
+        color:white;
+    }
+    form{
+        width:100%;
+        /*margin:0 auto;*/
+    }
+    #submit{
+        background-color: rgb(51, 85, 208);
+        width:95%;
+        height:40px;
+        border-radius:7px;
+        border:1px solid #5185d0;
+    }
+    span{/*使form中的input对齐*/
+        text-align: right;
+        width: 150px;
+        display: inline-block;
+    }
+    .article,.para{
+        margin:20px;
+        background-color: white;
+        border-right:2px solid rgb(130,130,130);
+        border-bottom:2px solid rgb(130,130,130);
+        padding:15px;
+    }
+    
+    body{
+        background-color: black;
+    }
+    .content{
+        clear:both;
+        background-color: rgb(222,222,222);
+        margin:0px 15px;
+    }
+    </style>
+</head>
+
+<body>
+        
+    <div class="content">
+            <div class="header">
+                    <img class="logo" src="http://pic.58pic.com/58pic/17/02/19/71D58PICbx3_1024.jpg" />
+                    <ul class="links">
+                        <li>
+                            <a href="http://www.baidu.com">导航链接一</a>
+                        </li>
+                        <li>
+                            <a href="http://ife.baidu.com/course/all">导航链接二</a>
+                        </li>
+                        <li>
+                            <a href="http://www.w3school.com.cn/">导航链接三</a>
+                        </li>
+                        <li>
+                            <a href="#">导航链接四</a>
+                        </li>
+                    </ul>
+                </div>
+        <div class="main">
+        <div class="article">
+            <h2>文章一级标题</h2>
+            <h4>文章二级标题</h4>
+            <h5>文章作者&nbsp;&nbsp;&nbsp;文章发表时间</h5>
+            <p>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                <strong>粗体字</strong>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落, 换行了<br/>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落。</p>
+                <img class="embed" src="https://www.baidu.com/img/bd_logo1.png" />
+            <p>又一段这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                <a href="http://ife.baidu.com/course/all">这里有一个链接连接到http://ife.baidu.com/course/all</a>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                <a href="http://ife.baidu.com/course/all" target="_blank">又有一个链接，点击打开新窗口连接到http://ife.baidu.com/course/all</a>又一段又一段又一段又一段又一段又一段又一段又一段</p>
+        </div>
+        <div class="article">
+            <h2>另一篇文章一级标题</h2>
+            <h4>文章二级标题</h4>
+            <h5>文章作者&nbsp;&nbsp;&nbsp;文章发表时间</h5>
+            <p>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                    <strong>粗体字</strong>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落, 换行了<br/>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                    这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落。</p>
+                    <img class="embed" src="https://www.baidu.com/img/bd_logo1.png" />
+            <ul>
+                <li>列表项目一</li>
+                <li>列表项目二</li>
+                <li>列表项目三</li>
+                <li>列表项目四</li>
+            </ul>
+        </div>
+        <div class="article">
+            <h3>图片</h3>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image"> 
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+            <div class="image">
+                <label>好看的图片</label>
+                <img src="https://www.baidu.com/img/bd_logo1.png " />
+            </div>
+        </div>
+        <div class="article">
+            <h2>最后一篇文章一级标题</h2>
+            <h4>文章二级标题</h4>
+            <h5>文章作者&nbsp;&nbsp;&nbsp;文章发表时间</h5>
+            <ol>
+                <li>排名1</li>
+                <li>排名2</li>
+                <li>排名3</li>
+            </ol>
+            <p>下边是一个表格</p>
+            <table border="1px">
+                <tbody>
+                    <thead>表头</thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>电话</th>
+                    </tr>
+                    <tr>
+                        <td>张三</td>
+                        <td>20</td>
+                        <td>188765435</td>
+                    </tr>
+                    <tr>
+                        <td>李四</td>
+                        <td>30</td>
+                        <td>188786557</td>
+                    </tr>
+                    <tr>
+                        <td>王五</td>
+                        <td>23</td>
+                        <td>1867854657</td>
+                    </tr>
+                    <tr style="background-color:gray">
+                        <td>总计</td>
+                        <td colspan=2>1000</td><!--默认属性不需要加style-->
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="para">
+            <h3>这里以后是一个侧栏，这是侧栏的标题</h4>
+            <form>
+                <div style="width:600px;margin:0 auto">
+                <span>请输入邮箱地址：</span>
+                <input type="text" name="email" placeholder="这是一个文本输入框" />
+                <br/>
+                <span>请输入密码：</span>
+                <input type="password" name="pwd" placeholder="密码" />
+                <br/>
+                <span>请重复输入密码：</span>
+                <input type="password" name="pwd" placeholder="重复输入密码" />
+                <br/>
+                <span>性别：</span>
+                <input type="radio" name="radio1" id="radio1" value="1" checked="checked"/><label for='radio1'>男</label>
+                <input type="radio" name="radio1" value="2" /><label for="raido2">女</label>
+                <br/>
+                <span>爱好：</span>
+                <input type="checkbox" name="cbox1" value="1" id="chkBox1"/><label for="chkBox1">运动</label>
+                <input type="checkbox" name="cbox1" value="2" id="chkBox2"/><label for="chkBox2">艺术</label>
+                <input type="checkbox" name="cbox1" value="3" id="chkBox3"/><label for="chkBox3">科学</label>
+                <br/>
+                <span>城市：</span>
+                <select>
+                    <option selected="selected ">北京</option>
+                    <option>上海</option>
+                    <option>天津</option>
+                    <option>深圳</option>
+                </select>
+                <br/>
+                <span>个人描述：</span>
+                <textarea rows="5 " cols="100 "></textarea>
+                </div>
+                <div style="text-align:center">
+                    <input type="submit"  id="submit"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="text-align:center;background-color:black;color:white;height:65px;line-height:65px;font-size:10px">
+    <label >版权所有©</label>
+    </div>
+</div>
+</body>
+
+</html>
