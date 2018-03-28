@@ -30,9 +30,17 @@
     .header{
         /*clear: both;*/
         background-color: #515151;
-        float: left;
-        width:97%;/*如果不设置float,此div不能包裹住float元素*/
-        margin:0 20px 20px 20px;
+        /*float: left;*/
+        width:100%;/*如果不设置float,此div不能包裹住float元素*/
+        margin:0 20px 20px 0;
+    }
+    .header::before,
+    .header::after{
+        content: "";
+        display: table;
+    }
+    .header::after{
+        clear: both;
     }
     h4,h5{
         color: gray;
@@ -93,11 +101,12 @@
     
     body{
         background-color: black;
+        margin:0;
     }
     .content{
         clear:both;
         background-color: rgb(222,222,222);
-        margin:0px 15px;
+        margin:0px 30px;
     }
     </style>
 </head>
@@ -106,7 +115,7 @@
         
     <div class="content">
             <div class="header">
-                    <img class="logo" src="http://pic.58pic.com/58pic/17/02/19/71D58PICbx3_1024.jpg" />
+                    <img class="logo" src="bd_logo1.png" />
                     <ul class="links">
                         <li>
                             <a href="http://www.baidu.com">导航链接一</a>
@@ -121,7 +130,7 @@
                             <a href="#">导航链接四</a>
                         </li>
                     </ul>
-                </div>
+            </div>   
         <div class="main">
         <div class="article">
             <h2>文章一级标题</h2>
@@ -130,10 +139,10 @@
             <p>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
                 <strong>粗体字</strong>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落, 换行了<br/>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
                 这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落。</p>
-                <img class="embed" src="https://www.baidu.com/img/bd_logo1.png" />
+                <img class="embed" src="bd_logo2.png" />
             <p>又一段这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
-                <a href="http://ife.baidu.com/course/all">这里有一个链接连接到http://ife.baidu.com/course/all</a>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
-                <a href="http://ife.baidu.com/course/all" target="_blank">又有一个链接，点击打开新窗口连接到http://ife.baidu.com/course/all</a>又一段又一段又一段又一段又一段又一段又一段又一段</p>
+                <a href="bd_logo2.png">这里有一个链接连接到http://ife.baidu.com/course/all</a>这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,这是一个很长的段落,
+                <a href="bd_logo2.png" target="_blank">又有一个链接，点击打开新窗口连接到http://ife.baidu.com/course/all</a>又一段又一段又一段又一段又一段又一段又一段又一段</p>
         </div>
         <div class="article">
             <h2>另一篇文章一级标题</h2>
