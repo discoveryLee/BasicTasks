@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task4</title>
+    <style type="text/css">
+        .center{
+            height: 200px;
+            width:400px;
+            background:#ccc;
+           /* margin-left:  auto;
+            margin-right: auto;*/
+            position: absolute;/*此处参考了参考文献*/
+            top: 50%;
+            left:50%;
+            margin:-100px 0 0 -200px;/*此处如何理解???*/
+        }
+        html,body{
+            position: relative;
+            height:100%;
+        }
+       .quartercircle1 { 
+            width: 50px; 
+            height: 50px; 
+            background-color: #fc0; 
+            border-radius: 0 0 50px 0;
+            position: absolute;
+            left:0px;
+            top:0px;
+        }
+        .quartercircle2 { 
+            width: 50px; 
+            height: 50px; 
+            background-color: #fc0; 
+            border-radius: 50px 0 0 0;
+            position: absolute;
+            right:0px;
+            bottom:0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="quartercircle1"></div>
+            
+        <div class="quartercircle2"></div>
+    </div>
+</body>
+</html>
