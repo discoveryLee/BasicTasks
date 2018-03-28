@@ -1,0 +1,78 @@
+<!DOCUTYPE html>
+<html>
+<head>
+    <title>task3</title>
+    <style type="text/css">
+        .wrap{
+            padding: 20px;
+            background-color: #eee;
+            border:#999;
+            
+        }
+        .wrap::before,
+        .wrap::after{
+            content:"";
+            display:table;
+            clear:both;
+        }
+        .wrap::after{
+            clear:both;
+        }
+        .left{
+            width:160px;
+           /* border:#999;*/
+            float: left;
+            padding:20px;
+            background-color:white;
+            
+        }
+        img{
+            width:80px;
+            height:80px;
+            border:1px solid #AAA;
+            margin:10 auto;
+        }
+        .right{
+            width:80px;
+            float:right;
+            padding:20px;
+            background-color:white;
+            
+        }
+        .middle{
+            /*float:left;*//*设置了这个就不行了*/
+            background-color: white;
+            padding:0 5px;
+            margin-left: 240px;/*使用margin使它宽度自适应*/
+            margin-right: 160px;
+            /*zoom:-1;*/
+        }
+        div{
+            border:1px solid #AAA;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+        
+    <div class="left">
+        <img  class="logo" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2208082549,1989069819&fm=58"/>
+        <span>百度翻译</span>
+    </div>
+    
+    <div class="right">
+        <img  class="personLogo" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2208082549,1989069819&fm=58"/>
+        <img  class="personLogo" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2208082549,1989069819&fm=58"/>
+        <img  class="personLogo" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2208082549,1989069819&fm=58"/>
+        <img  class="personLogo" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2208082549,1989069819&fm=58"/>
+    </div>
+    <div class="middle">
+    
+            <h3>团队介绍</h3>
+            <p>在最美的年华里，走进最接近梦想的地方。 在这里，我们亲眼见证技术的力量，一起用今天的努力，改变不久后的未来。 百度四季延时，为了留住飞逝的韶光，送给时光里追梦的你。如果我们的征途是星辰大海，愿你我青春无悔。</p>
+            <p>在最美的年华里，走进最接近梦想的地方。 在这里，我们亲眼见证技术的力量，一起用今天的努力，改变不久后的未来。 百度四季延时，为了留住飞逝的韶光，送给时光里追梦的你。如果我们的征途是星辰大海，愿你我青春无悔。</p>
+          
+    </div>
+</div>
+</body>
+</html>
