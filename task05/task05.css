@@ -1,0 +1,140 @@
+body{
+    background-color: black;
+    margin:0;
+}
+.logo{
+    height:60px;
+    width: auto;
+    float: left;
+}
+.main{
+    /*float: left;*/
+    margin-right:430px;
+}
+.links{
+    float:right;
+    margin-right: 10px;
+}
+.links li{
+    float: left;
+    margin-left: 14px;
+    list-style: none;
+}
+.links li a{
+    text-decoration: none;
+    color: white;
+    font-size: 10px;
+}
+.header{
+    background-color: #515151;
+    margin:0 30px;
+    height:60px;  
+}
+
+.header::before,
+.header::after{
+    content: "";
+    display: table;
+}
+.header::after{
+    clear: both;
+}
+h4,h5{
+    color: gray;
+}
+.main p{
+    line-height: 30px;
+    font-size: 15px;
+}
+.embed{
+    display: block;
+    height:150px;
+    width: 300px;
+}
+.image{
+    border: 1px solid black;
+    width:125px;
+    height:125px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.image img{
+    max-width:100px;
+    height:auto;
+}
+.data{
+   /* border:1px;/*不知道为啥不管用???*/
+   width: 100%;
+   table-layout: fixed;/*列等宽*/
+   border-collapse:collapse;/*消除单元格间距*/
+}
+.data th{
+    background-color: #515151;
+    color:white;
+}
+form{
+    width:100%;
+    /*margin:0 auto;*/
+}
+#submit{
+    background-color: rgb(51, 85, 208);
+    width:95%;
+    height:40px;
+    border-radius:7px;
+    border:1px solid #5185d0;
+}
+.leftLabel{/*使form中的input对齐*/
+    display:inline-block;
+    text-align:right;
+    width:150px;
+    height: 40px;  
+}
+.article,.para{
+    margin:20px;
+    background-color: white;
+    border-right:2px solid rgb(130,130,130);
+    border-bottom:2px solid rgb(130,130,130);
+    padding:15px;
+}
+.para{
+    float: right;
+    width:365px;
+    height:500px;
+}
+.content:before,
+.content:after{
+    content:"";
+    display: table-cell;
+}
+.content:after{
+    clear:both;
+}
+.content{
+    background-color: rgb(222,222,222);
+    margin:0px 30px;
+}
+.footer{
+    text-align:center;
+    background-color:black;
+    color:white;
+    height:65px;
+    line-height:65px;
+    font-size:10px;
+}
+.info{
+    width:100%;
+    margin:0 auto;
+}
+.submit{
+    text-align: center;
+}
+.description label{
+    vertical-align:text-top;
+    
+}
+.clearFloat{
+    clear: both;
+}
+.image{
+    display: inline-block;
+}
