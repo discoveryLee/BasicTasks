@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task06</title>
+    
+</head>
+<body>
+    <label>用户名<input type="text" name="userName" id="userName"/></label><button id="verify1">验证</button>
+    <label id="verifyResult1"></label><br/>
+    <label>姓名<input type="text" name="name2" id="name2"/></label><button id="verify2">验证</button>
+    <label id="verifyResult2"></label><br/>
+    <label>名称<input type="text" name="name3" id="name3"/></label><button id="verify3">验证</button>
+    <label id="verifyResult3"></label><br/>
+
+    <script type="text/javascript">
+    var btn=document.getElementById("verify");
+    document.addEventListener("click",function(e){//mouseEvent也能监听到？
+        e=e||window.event;
+        var tagId=e.target.id;// 触发事件的对象保存在事件的target里面
+        switch(tagId){//根据id判断button
+            case "verify1":
+                var input=document.getElementById("userName").value;
+                var prompt=document.getElementById("verifyResult1");
+                verify(input,prompt);
+                break;
+            case "verify2":
+                var input=document.getElementById("name2").value;
+                var prompt=document.getElementById("verifyResult2");
+                verify(input,prompt);
+                break;
+            case "verify3":
+                var input=document.getElementById("name3").value;
+                var prompt=document.getElementById("verifyResult3");
+                verify(input,prompt);
+        }
+    function verify(input,prompt){
+        if(input==null||input==""){
+                    prompt.innerHTML="不能为空";
+                }else{
+                    var len=0;
+                    var arr=input.split("");
+                    arr.forEach(element => {
+                        var ascii=element.charCodeAt();
+                        if(ascii>=0&&ascii<128){//ASCII
+                            len++;
+                        }else{
+                            len+=2;
+                        }
+                    });
+                    //alert(len);
+                if(len<4||len>16){
+                        prompt.innerHTML="长度必须为4~16个字符"
+                    }else{
+                        prompt.innerHTML="格式正确";
+                    }
+                } 
+        
+        
+      
+    }
+});          
+    </script>
+</body>
+</html>
