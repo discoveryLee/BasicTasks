@@ -15,11 +15,17 @@
         position: relative;
     }
     .left1{
+        /*position: relative;*/
         width: 641px;
+    }
+    .opacity{
+        position: relative;
+        font-size:0px;/*清除div和img之间的缝隙*/
     }
     .right1{
         float:right;
         width:203px;
+        border-top: 2px solid #cc8091;
     }
    
     .what,.when,.how{
@@ -46,7 +52,7 @@
         width: 415px;
         border-bottom: 2px solid  #000;
     }
-    .rightBottom{
+    .right-bottom{
         width:459px;
         height:318px;
         background-color: rgb(238,238,214);
@@ -54,7 +60,7 @@
         padding-top:20px;
         position: relative;
     }
-    .rightBottom>p{
+    .right-bottom>p{
         margin:0 0 0 15px;
     }
     .right2{
@@ -139,14 +145,14 @@
         font-family: "Microsoft YaHei";
     }
     .right1 p{
-        margin:0 40px 0 0;
+        margin:0;
     }
-    .horizontal{
+    /*.horizontal{
         width:203px;
         height:2px;
         background-color: #cc8091;
         border:none;
-    }
+    }*/
     .vertical{
         width:2px;
         height:86px;
@@ -155,16 +161,24 @@
         margin-left:65px;
         float:left;
     }
-    .title{
+    .title1,.title2{
         font-size:24px;
         color:#000;
         font-family: "Microsoft YaHei";
         text-decoration: underline;
+        font-variant:small-caps;/*设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小。(意味着已经使用大写字母的文本字体会更大)。*/
+        /*text-transform:capitalize;*/
+        /*line-height: 40px;*//*设置后与图片效果不一致？？*/
     }
+    /*.title1::first-letter,.title2::first-letter{
+        font-size:24px;
+    }*//*如果直接将首字母变大会影响下划线*/
+
     .subTitle{
         font-size:12px;
         color:#676767;
         font-family: "KaiTi";
+        line-height: 10px;/*段落间距10px;*/
     }
     .corner{
         position: relative;
@@ -220,6 +234,7 @@
     .wwh{
         font-size: 0px;/*清除子div之间的间隙*/
         margin-bottom: 10px;
+        /*width:641px;*/
     }
     .wwh p{
         line-height: 16px;/*段落间距16px*/
@@ -287,7 +302,7 @@
         position: relative;
         margin:0 44px;
     }
-    .webName{
+    .web-name{
         margin:0px;
         position: absolute;
         top: 0px;
@@ -305,4 +320,79 @@
     .tri{
         max-width:15px;
         height: auto;
+    }
+    .img1{
+        width:641px;
+        height:301px;
+    }
+    .mask1,.mask2{
+        height:301px;
+        width:191px;
+        /*background-color:#000;
+        opacity: .3;*/
+        background-color: rgba(0,0,0,.3);
+    }
+    .mask1{
+        position: absolute;
+        top:0;
+        left:0;
+    }
+    .mask2{
+        position: absolute;
+        right:0;
+        bottom:0;
+    }
+    .image2{
+        width:458px;
+        height:275px;
+    }
+    .super-opacity{
+        position: relative;
+        font-size: 0;
+    }
+    .mask3{
+        position: absolute;
+        bottom: 0;
+        right:0;
+        width:458px;
+        height:61px;
+        /*background-color: #000;
+        opacity:.4;*//*这两行代码是让整个元素半透明，它的内容（文字图片之类的）也是透明的*/
+        background-color: rgba(0,0,0,0.5);/*只让背景半透明，它的内容（文字图片之类的）不是透明的*/
+    }
+    .mask3-abstract{
+        position: absolute;
+        left:40px;
+        top:8.5px;
+        height:44px;
+        border-left: 3px solid #72b16a;
+        /*z-index: 1000;*/
+    }
+    .clue1,.clue2{
+        display: inline-block;
+        font-family:"Microsoft YaHei";
+        margin:0 0 0 15px;
+    }
+    .clue1{
+        font-size: 26px;
+        color: #fff;
+    }
+    .clue2{
+        font-size: 12px;
+        color: #72b16a;        
+        letter-spacing: 140%;
+        font-style:oblique;
+    }
+    .placeholder{
+        float:right;
+        width:0;
+        height:60px;
+    }
+    .down::before,
+    .down::after{
+        content: "";
+        display: table;
+    }
+    .down::after{
+        clear: both;
     }
