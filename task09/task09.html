@@ -1,270 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>task09</title>
 </head>
+
 <body>
     <form>
-        <label>名称<input type="text" name="name" id="name1"/></label>
-        <label id="verifyName1"></label><br/>
-        <label>密码<input type="password" name="pwd" id="pwd1"/></label>
-        <label id="verifyPwd1"></label><br/>
-        <label>密码确认<input type="password" name="confirmPwd" id="confirmPwd1"/></label>
-        <label id="verifyConfirmPwd1"></label><br/>
-        <label>邮箱<input type="email" name="email" id="email1"/></label>
-        <label id="verifyEmail1"></label><br/>
-        <label>手机<input type="text" name="phone" id="phone1"/></label>
-        <label id="verifyPhone1"></label><br/>
-        <input type="submit" id="submit1"/>
+        <label>名称
+            <input type="text" name="name" id="name1" />
+        </label>
+        <label id="verifyName1"></label>
+        <br/>
+        <label>密码
+            <input type="password" name="pwd" id="pwd1" />
+        </label>
+        <label id="verifyPwd1"></label>
+        <br/>
+        <label>密码确认
+            <input type="password" name="confirmPwd" id="confirmPwd1" />
+        </label>
+        <label id="verifyConfirmPwd1"></label>
+        <br/>
+        <label>邮箱
+            <input type="email" name="email" id="email1" />
+        </label>
+        <label id="verifyEmail1"></label>
+        <br/>
+        <label>手机
+            <input type="text" name="phone" id="phone1" />
+        </label>
+        <label id="verifyPhone1"></label>
+        <br/>
+        <input type="button" id="submit1" value="提交" />
+        <!--不要写type="submit",否则无论怎样都会提交-->
     </form>
     <form>
-        <label>名称<input type="text" name="name" id="name2"/></label>
-        <label id="verifyName2"></label><br/>
-        <label>密码<input type="password" name="pwd" id="pwd2"/></label>
-        <label id="verifyPwd2"></label><br/>
-        <label>密码确认<input type="password" name="confirmPwd" id="confirmPwd2"/></label>
-        <label id="verifyConfirmPwd2"></label><br/>
-        <label>邮箱<input type="email" name="email" id="email2"/></label>
-        <label id="verifyEmail2"></label><br/>
-        <label>手机<input type="text" name="phone" id="phone2"/></label>
-        <label id="verifyPhone2"></label><br/>
-        <input type="submit" id="submit2"/>
+        <label>名称
+            <input type="text" name="name" id="name2" />
+        </label>
+        <label id="verifyName2"></label>
+        <br/>
+        <label>密码
+            <input type="password" name="pwd" id="pwd2" />
+        </label>
+        <label id="verifyPwd2"></label>
+        <br/>
+        <label>密码确认
+            <input type="password" name="confirmPwd" id="confirmPwd2" />
+        </label>
+        <label id="verifyConfirmPwd2"></label>
+        <br/>
+        <label>邮箱
+            <input type="email" name="email" id="email2" />
+        </label>
+        <label id="verifyEmail2"></label>
+        <br/>
+        <label>手机
+            <input type="text" name="phone" id="phone2" />
+        </label>
+        <label id="verifyPhone2"></label>
+        <br/>
+        <input type="button" id="submit2" value="提交" />
     </form>
     <form>
-        <label>名称<input type="text" name="name" id="name3"/></label>
-        <label id="verifyName3"></label><br/>
-        <label>密码<input type="password" name="pwd" id="pwd3"/></label>
-        <label id="verifyPwd3"></label><br/>
-        <label>密码确认<input type="password" name="confirmPwd" id="confirmPwd3"/></label>
-        <label id="verifyConfirmPwd3"></label><br/>
-        <label>邮箱<input type="email" name="email" id="email3"/></label>
-        <label id="verifyEmail3"></label><br/>
-        <label>手机<input type="text" name="phone" id="phone3"/></label>
-        <label id="verifyPhone3"></label><br/>
-        <input type="submit" id="submit3"/>
+        <label>名称
+            <input type="text" name="name" id="name3" />
+        </label>
+        <label id="verifyName3"></label>
+        <br/>
+        <label>密码
+            <input type="password" name="pwd" id="pwd3" />
+        </label>
+        <label id="verifyPwd3"></label>
+        <br/>
+        <label>密码确认
+            <input type="password" name="confirmPwd" id="confirmPwd3" />
+        </label>
+        <label id="verifyConfirmPwd3"></label>
+        <br/>
+        <label>邮箱
+            <input type="email" name="email" id="email3" />
+        </label>
+        <label id="verifyEmail3"></label>
+        <br/>
+        <label>手机
+            <input type="text" name="phone" id="phone3" />
+        </label>
+        <label id="verifyPhone3"></label>
+        <br/>
+        <input type="button" id="submit3" value="提交" />
     </form>
     <script type="text/javascript">
-    var flag1,flag2,flag3,flag4,flag5,flag6,flag7,flag8,flag9,flag10,flag11,flag12,flag13,flag14,flag15;
-    //document.addEventListener('focus',function(e) focus不支持冒泡
-    var array=new Array();
-    array=document.getElementsByTagName("input");
-    var arr=Array.from(array);/*它 is not an array. It is HTMLCollection and it does not have forEach method. You can convert it to the array first.*/
-    arr.forEach(element => {
-        //获得焦点时，出现规则提示
-        element.addEventListener('focus',function(e){
-            e=e||window.e;
-            var tagId=e.target.id;
-            switch(tagId){
+        var flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag11, flag12, flag13, flag14, flag15;
+        //document.addEventListener('focus',function(e) focus不支持冒泡
+        var array = new Array();
+        array = document.getElementsByTagName("input");
+        var arr = Array.from(array);/*它 is not an array. It is HTMLCollection and it does not have forEach method. You can convert it to the array first.*/
+        function confirmCurrentId(e) {
+            e = e || window.e;
+            var tagId = e.target.id;
+            switch (tagId) {
                 case "name1":
-                    txtPrompt("verifyName1","必填，长度为4~16个字符");
-                     break;
-                case "name2":
-                    txtPrompt("verifyName2","必填，长度为4~16个字符");
-                    break;
-                case "name3":
-                    txtPrompt("verifyName3","必填，长度为4~16个字符");
-                    break;
-                case "pwd1":
-                    txtPrompt("verifyPwd1","必填，长度为4~16个字符");
-                    break;
-                case "pwd2":
-                    txtPrompt("verifyPwd2","必填，长度为4~16个字符");
-                    break;
-                case "pwd3":
-                    txtPrompt("verifyPwd3","必填，长度为4~16个字符");
-                    break;
-                case "confirmPwd1":
-                    txtPrompt("verifyConfirmPwd1","再次输入相同密码");
-                    break;
-                case "confirmPwd2":
-                    txtPrompt("verifyConfirmPwd2","再次输入相同密码");
-                    break;
-                case "confirmPwd3":
-                    txtPrompt("verifyConfirmPwd3","再次输入相同密码");
-                    break;
-                case "email1":
-                    txtPrompt("verifyEmail1","请输入您的邮箱");
-                    break;
-                case "email2":
-                    txtPrompt("verifyEmail2","请输入您的邮箱");
-                    break;
-                case "email3":
-                    txtPrompt("verifyEmail3","请输入您的邮箱");
-                    break;
-                case "phone1":
-                    txtPrompt("verifyPhone1","请输入手机号码");
-                    break;
-                case "phone2":
-                    txtPrompt("verifyPhone2","请输入手机号码");
-                    break;
-                case "phone3":
-                    txtPrompt("verifyPhone3","请输入手机号码");
-                    break;
-            }
-        });
-        //失去焦点时，显示验证结果
-        element.addEventListener("blur",function(e){
-            e=e||window.e;
-            var tagId=e.target.id;
-            switch(tagId){
-                case "name1":
-                    flag1=verifyName("name1","verifyName1");
+                    txtPrompt("verifyName1", "必填，长度为4~16个字符");
                     break;
                 case "name2":
-                    flag2=verifyName("name2","verifyName2");
+                    txtPrompt("verifyName2", "必填，长度为4~16个字符");
                     break;
                 case "name3":
-                    flag3=verifyName("name3","verifyName3");
+                    txtPrompt("verifyName3", "必填，长度为4~16个字符");
                     break;
                 case "pwd1":
-                    flag4=verifyName("pwd1","verifyPwd1");
+                    txtPrompt("verifyPwd1", "必填，长度为4~16个字符");
                     break;
                 case "pwd2":
-                    flag5=verifyName("pwd2","verifyPwd2");
+                    txtPrompt("verifyPwd2", "必填，长度为4~16个字符");
                     break;
                 case "pwd3":
-                    flag6=verifyName("pwd3","verifyPwd3");
+                    txtPrompt("verifyPwd3", "必填，长度为4~16个字符");
                     break;
                 case "confirmPwd1":
-                    flag7=verifyPwdConfirm("pwd1","confirmPwd1","verifyConfirmPwd1");
+                    txtPrompt("verifyConfirmPwd1", "再次输入相同密码");
                     break;
                 case "confirmPwd2":
-                    flag8=verifyPwdConfirm("pwd2","confirmPwd2","verifyConfirmPwd2");
+                    txtPrompt("verifyConfirmPwd2", "再次输入相同密码");
                     break;
                 case "confirmPwd3":
-                    flag9=verifyPwdConfirm("pwd3","confirmPwd3","verifyConfirmPwd3");
+                    txtPrompt("verifyConfirmPwd3", "再次输入相同密码");
                     break;
                 case "email1":
-                    flag10=verifyEmail("email1","verifyEmail1");
+                    txtPrompt("verifyEmail1", "请输入您的邮箱");
                     break;
                 case "email2":
-                    flag11=verifyEmail("email2","verifyEmail2");
+                    txtPrompt("verifyEmail2", "请输入您的邮箱");
                     break;
                 case "email3":
-                    flag12=verifyEmail("email3","verifyEmail3");
+                    txtPrompt("verifyEmail3", "请输入您的邮箱");
                     break;
                 case "phone1":
-                    flag13=verifyPhone("phone1","verifyPhone1");
+                    txtPrompt("verifyPhone1", "请输入手机号码");
                     break;
                 case "phone2":
-                    flag14=verifyPhone("phone2","verifyPhone2");
+                    txtPrompt("verifyPhone2", "请输入手机号码");
                     break;
                 case "phone3":
-                    flag15=verifyPhone("phone3","verifyPhone3");
+                    txtPrompt("verifyPhone3", "请输入手机号码");
                     break;
             }
+        }
+        arr.forEach(element => {
+            //获得焦点时，出现规则提示
+            element.addEventListener('focus', confirmCurrentId);
+            //失去焦点时，显示验证结果
+            element.addEventListener("blur", confirmPromatId);
         });
-    });
-         
+        function confirmPromatId(e) {
+            e = e || window.e;
+            var tagId = e.target.id;
+            switch (tagId) {
+                case "name1":
+                    flag1 = verifyName("name1", "verifyName1");
+                    break;
+                case "name2":
+                    flag2 = verifyName("name2", "verifyName2");
+                    break;
+                case "name3":
+                    flag3 = verifyName("name3", "verifyName3");
+                    break;
+                case "pwd1":
+                    flag4 = verifyName("pwd1", "verifyPwd1");
+                    break;
+                case "pwd2":
+                    flag5 = verifyName("pwd2", "verifyPwd2");
+                    break;
+                case "pwd3":
+                    flag6 = verifyName("pwd3", "verifyPwd3");
+                    break;
+                case "confirmPwd1":
+                    flag7 = verifyPwdConfirm("pwd1", "confirmPwd1", "verifyConfirmPwd1");
+                    break;
+                case "confirmPwd2":
+                    flag8 = verifyPwdConfirm("pwd2", "confirmPwd2", "verifyConfirmPwd2");
+                    break;
+                case "confirmPwd3":
+                    flag9 = verifyPwdConfirm("pwd3", "confirmPwd3", "verifyConfirmPwd3");
+                    break;
+                case "email1":
+                    flag10 = verifyEmail("email1", "verifyEmail1");
+                    break;
+                case "email2":
+                    flag11 = verifyEmail("email2", "verifyEmail2");
+                    break;
+                case "email3":
+                    flag12 = verifyEmail("email3", "verifyEmail3");
+                    break;
+                case "phone1":
+                    flag13 = verifyPhone("phone1", "verifyPhone1");
+                    break;
+                case "phone2":
+                    flag14 = verifyPhone("phone2", "verifyPhone2");
+                    break;
+                case "phone3":
+                    flag15 = verifyPhone("phone3", "verifyPhone3");
+                    break;
+            }
+        }
         //规则提示
-        function txtPrompt(targetId,str){
-           var target=document.getElementById(targetId);
-           target.innerHTML=str;
-           var i=typeof(window.e);
+        function txtPrompt(targetId, str) {
+            var target = document.getElementById(targetId);
+            target.innerHTML = str;
+            var i = typeof (window.e);
         }
         //验证name和password
-        function verifyName(inputId,promptId){
-            var input=document.getElementById(inputId).value;
-            var prompt=document.getElementById(promptId);
-            if(input==null||input==""){
-                prompt.innerHTML="不能为空";
+        function verifyName(inputId, promptId) {
+            var input = document.getElementById(inputId).value;
+            var prompt = document.getElementById(promptId);
+            if (input == null || input == "") {
+                prompt.innerHTML = "不能为空";
                 return false;
-            }else{
-                var len=0;
-                var arr=input.split("");
+            } else {
+                var len = 0;
+                var arr = input.split("");
                 arr.forEach(element => {
-                    var ascii=element.charCodeAt();
-                    if(ascii>=0&&ascii<128){//ASCII
+                    var ascii = element.charCodeAt();
+                    if (ascii >= 0 && ascii < 128) {//ASCII
                         len++;
-                    }else{
-                        len+=2;
+                    } else {
+                        len += 2;
                     }
                 });
-            //alert(len);
-            if(len<4||len>16){
-                    prompt.innerHTML="长度必须为4~16个字符";
+                //alert(len);
+                if (len < 4 || len > 16) {
+                    prompt.innerHTML = "长度必须为4~16个字符";
                     return false;
-            }else{
-                    prompt.innerHTML="格式正确";
+                } else {
+                    prompt.innerHTML = "格式正确";
                     return true;
                 }
-            }  
+            }
         }
         //验证passwordConfirm
-        function verifyPwdConfirm(inputId1,inputId2,promptId){
-            var input1=document.getElementById(inputId1).value;
-            var input2=document.getElementById(inputId2).value;
-            var prompt=document.getElementById(promptId);
-            if(input2==null||input2==""){
-                prompt.innerHTML="不能为空";
+        function verifyPwdConfirm(inputId1, inputId2, promptId) {
+            var input1 = document.getElementById(inputId1).value;
+            var input2 = document.getElementById(inputId2).value;
+            var prompt = document.getElementById(promptId);
+            if (input2 == null || input2 == "") {
+                prompt.innerHTML = "不能为空";
                 return false;
-            }else if(input1!=input2){
-                prompt.innerHTML="两次输入不一致";
+            } else if (input1 != input2) {
+                prompt.innerHTML = "两次输入不一致";
                 return false;
-            }else{
-                prompt.innerHTML="密码输入一致";
+            } else {
+                prompt.innerHTML = "密码输入一致";
                 return true;
-            } 
+            }
         }
         //验证email
-        function verifyEmail(inputId,promptId){
-            var input=document.getElementById(inputId).value;
-            var prompt=document.getElementById(promptId);
-            var emailRegExp =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-            if(input.length>0&&emailRegExp.test(input)){
-                prompt.innerHTML="邮箱格式正确";
+        function verifyEmail(inputId, promptId) {
+            var input = document.getElementById(inputId).value;
+            var prompt = document.getElementById(promptId);
+            var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.length > 0 && emailRegExp.test(input)) {
+                prompt.innerHTML = "邮箱格式正确";
                 return true;
-            }else{
-                prompt.innerHTML="邮箱格式错误";
+            } else {
+                prompt.innerHTML = "邮箱格式错误";
                 return false;
             }
         }
         //验证phone
-        function verifyPhone(inputId,promptId){
-            var input=document.getElementById(inputId).value;
-            var prompt=document.getElementById(promptId);
-            var phoneRegExp=/^[1][3,4,5,7,8][0-9]{9}$/;
-            if(input.length>0&&phoneRegExp.test(input)){
-                prompt.innerHTML="手机格式正确";
+        function verifyPhone(inputId, promptId) {
+            var input = document.getElementById(inputId).value;
+            var prompt = document.getElementById(promptId);
+            var phoneRegExp = /^[1][3,4,5,7,8][0-9]{9}$/;
+            if (input.length > 0 && phoneRegExp.test(input)) {
+                prompt.innerHTML = "手机格式正确";
                 return true;
-            }else{
-                prompt.innerHTML="手机格式错误";
+            } else {
+                prompt.innerHTML = "手机格式错误";
                 return false;
             }
         }
-        document.addEventListener("click",function(e){
-            e=e||window.e;
-            tagId=e.target.id;
-            switch(tagId){
+        document.addEventListener("click", confirmClickId);//???第三个参数为false,就不起作用了
+        function confirmClickId(e) {
+            e = e || window.e;
+            tagId = e.target.id;
+            switch (tagId) {
                 case "submit1":
-                    if((flag1&&flag4&&flag7&&flag10&&flag13)===true){
+                    if ((flag1 && flag4 && flag7 && flag10 && flag13) === true) {
                         alert("form1提交成功");
-                    }else{
+                    } else {
                         alert("form1输入有误！");
                         return false;
                     }
                     break;
                 case "submit2":
-                    if((flag2&&flag5&&flag8&&flag11&&flag14)===true){
+                    if ((flag2 && flag5 && flag8 && flag11 && flag14) === true) {
                         alert("form2提交成功");
-                    }else{
+                    } else {
                         alert("form2输入有误！");
                         return false;
                     }
                     break;
                 case "submit3":
-                    if((flag3&&flag6&&flag9&&flag12&&flag15)===true){
+                    if ((flag3 && flag6 && flag9 && flag12 && flag15) === true) {
                         alert("form3提交成功");
-                    }else{
+                    } else {
                         alert("form3输入有误！");
                         return false;
                     }
                     break;
             }
-        });
+        }
     </script>
 </body>
+
 </html>
