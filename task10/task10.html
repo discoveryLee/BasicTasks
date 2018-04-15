@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,31 @@
     <title>task10</title>
 </head>
 <style type="text/css">
+    nav,
+    .login {
+        float: right;
+    }
+
+    .image {
+        position: relative;
+    }
+
+    .up-on-img {
+        position: absolute;
+        left: 100px;
+        top: 220px;
+        color:#fff;
+        font-size:30px;
+    }
 
 </style>
+
 <body>
     <header>
-        <img src="logo.png" alt="newlife"/><span>新世界</span>
+        <img src="logo.png" alt="newlife" />
+        <span>新世界</span>
+        <div class="login">
+            <img src="login.png" alt="newlife">登陆</div>
         <nav>
             <a href="#">首页</a>
             <a href="#">最新活动</a>
@@ -19,11 +40,16 @@
             <a href="#">爱心社区</a>
             <a href="#">关于我们</a>
         </nav>
-        <img src="login.png" alt="newlife"><div>登陆</div>
     </header>
-    <section>
-        <img src="img.jpg" alt="newlife">
+    <section class="image">
+        <img class="img1" src="img1.jpg" alt="newlife">
+        <div class="up-on-img">
+            <p>Time of new life</p>
+            <p>新时代，年轻的人们让我们一起<br>体验新生活，享受新生活</p>
+            <input type="button" value="开始体验">
+        </div>
     </section>
     <footer></footer>
 </body>
+
 </html>
