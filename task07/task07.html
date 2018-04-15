@@ -41,11 +41,12 @@ function getData() {
   var data=[];
   var k=0;
   var ulNode=document.getElementById("source");
-  var children=ulNode.childNodes;//得到ulNode所有的孩子节点
+  //var children=ulNode.childNodes;//得到ulNode所有的孩子节点
+  var children=ulNode.children;//使用这个就可以只得到li
   var len=children.length;
-  //alert(len);//为什么是15???
+  //alert(len);//为什么是15??? childNodes这个属性会把所有li之间的text整合成一个text算一个子元素。
   for(var i=0;i<len;i++){
-    if(children[i].nodeName=="LI"){
+    //if(children[i].nodeName=="LI"){
         var text=children[i].innerHTML;
         //alert(text);
         var city=text.substring(0,2);
@@ -54,7 +55,7 @@ function getData() {
         var meta=[city,quality];
         data[k]=meta;
         k++;
-    }
+   // }
     //document.write(children[i].nodeName+" "+children[i].innerHTML+"<br/>");
   }
   /*
