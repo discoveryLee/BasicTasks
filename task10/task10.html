@@ -6,33 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>task10</title>
+    <link rel="stylesheet" href="task10.css" media="all">
 </head>
-<style type="text/css">
-    nav,
-    .login {
-        float: right;
-    }
-
-    .image {
-        position: relative;
-    }
-
-    .up-on-img {
-        position: absolute;
-        left: 100px;
-        top: 220px;
-        color:#fff;
-        font-size:30px;
-    }
-
-</style>
 
 <body>
     <header>
-        <img src="logo.png" alt="newlife" />
-        <span>新世界</span>
+        <img src="images/logo.png" alt="newlife" />
+        <span class="web-name">新世界</span>
         <div class="login">
-            <img src="login.png" alt="newlife">登陆</div>
+            <img src="images/login.png" alt="newlife">登录</div>
         <nav>
             <a href="#">首页</a>
             <a href="#">最新活动</a>
@@ -42,14 +24,234 @@
         </nav>
     </header>
     <section class="image">
-        <img class="img1" src="img1.jpg" alt="newlife">
+        <img class="img1" src="images/img1.jpg" alt="newlife">
         <div class="up-on-img">
-            <p>Time of new life</p>
-            <p>新时代，年轻的人们让我们一起<br>体验新生活，享受新生活</p>
-            <input type="button" value="开始体验">
+            <p class="slogan1">Time of new life</p>
+            <p class="slogan2">新时代，年轻的人们让我们一起体验新生活，享受新生活</p>
+            <input class="start-exp" type="button" value="开始体验">
         </div>
     </section>
-    <footer></footer>
+    <section class="icon-bar">
+        <div class="wrap">
+            <div class="block">
+                <img src="images/icon1.png" alt="newlife">
+                <div class="para">
+                    <p>打造全新世界观，让你更爱你的生活</p>
+                </div>
+            </div>
+            <div class="block">
+                <img src="images/icon2.png" alt="newlife">
+                <div class="para">
+                    <p>丰富多彩的公益活动，发挥新世界的主人公意识</p>
+                </div>
+            </div>
+            <div class="block">
+                <img src="images/icon3.png" alt="newlife">
+                <div class="para">
+                    <p>时尚的新理念，超前体验未知的生活</p>
+                </div>
+            </div>
+            <div class="block">
+                <img src="images/icon4.png" alt="newlife">
+                <div class="para last">
+                    <p>完善的培养机制，培养你全新的世界观</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mid-bar">
+        <div class="wrap2">
+            <img src="images/big-logo.png" alt="newlife">
+            <p class="question">关于新世界，你不知道的还有什么?</p>
+        </div>
+    </section>
+    <div class="backg">
+        <!--<img src="images/img2.jpg" alt="newlife">-->
+        <p class="search-title">查找新世界城市活动信息</p>
+        <hr class="hr1">
+        <p class="hint">每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+        <div>
+            <select class="country">
+                <option "selected">中国</option>
+                <option>美国</option>
+                <option>英国</option>
+                <option>日本</option>
+            </select>
+            <select class="province">
+                <option>北京市</option>
+                <option>天津市</option>
+                <option>河北省</option>
+                <option>陕西省</option>
+                <option>内蒙古自治区</option>
+                <option>辽宁省</option>
+            </select>
+            <select class="city">
+                <option>海淀</option>
+                <option>朝阳</option>
+                <option>顺义</option>
+                <option>昌平</option>
+            </select>
+            <input type="button" value="搜索" class="search" />
+        </div>
+    </div>
+    <div class="exhibition">
+        <div class="inner">
+            <div class="artists">
+                <div class="image-wrap">
+                    <img class="beauty" src="images/person1.jpg" alt="newlife">
+                </div>
+                <p>北京活动</p>
+                <span>新社区大联盟</span>
+            </div>
+            <div class="artists">
+                <div class="image-wrap">
+                    <img class="beauty" src="images/person2.jpg" alt="newlife">
+                </div>
+                <p>上海活动</p>
+                <span>夜上海新景观探索</span>
+            </div>
+            <div class="artists">
+                <div class="image-wrap">
+                    <img class="beauty" src="images/person3.jpg" alt="newlife">
+                </div>
+                <p>深圳活动</p>
+                <span>全新海岸线观站点</span>
+            </div>
+            <div class="artists">
+                <div class="image-wrap">
+                    <img class="beauty" src="images/person4.jpg" alt="newlife">
+                </div>
+                <p>香港活动</p>
+                <span>奢侈消费大派送</span>
+            </div>
+            <div class="clear-float"></div>
+        </div>
+    </div>
+    <div class="workers">
+        <div class="workers-right">
+            <div class="worker-right-inner">
+                <h2>新世界/
+                    <span class="number">01</span>
+                </h2>
+                <div class="p-container">
+                    <p class="paragraph">新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界</p>
+                </div>
+                <input type="button" value="更多详情" class="get-more" />
+                <br>
+                <img src="images/cur.png">
+            </div>
+        </div>
+        <div class="workers-left">
+            <div class="workers-left-inner">
+                <h3>新世界</h3>
+                <h1>TIME</h1>
+                <span>@新世界-北京</span>
+                <br>
+                <span>2018.04.18</span>
+            </div>
+        </div>
+        <!--<img src="images/workers.jpg" alt="newlife">-->
+
+    </div>
+    <div class="new-time">
+        <div class="new-time-left">
+            <div class="newtime-leftwrap">
+                <p>新时代</p>
+                <p>关于爱生活的我们</p>
+                <hr class="hr1">
+                <input type="button" value="查看更多" class="newtime-getmore1">
+            </div>
+        </div>
+        <div class="new-time-middle">
+            <div  class="newtime-rightwrap">
+            <p>新时代</p>
+            <p>关于爱生活的我们</p>
+            <hr class="hr1">
+            <input type="button" value="查看更多" class="newtime-getmore2">
+        </div>
+        </div>
+        <div class="new-time-right">
+            <img src="images/viewer.jpg" alt="newlife" class="img-viewer" />
+        </div>
+        <div class="clear-float"></div>
+    </div>
+    </div>
+    <div class="join">
+        <div class="up">
+            <div class="up-inner">
+                <h2>成为我们的志愿者</h2>
+                <hr class="hr2">
+                <p>新世界的大家庭需要每一个爱生活的人加入，如果你够年轻，有梦想，有激情
+                    <br>那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
+            </div>
+        </div>
+        <div class="down">
+            <div class="down-inner">
+                <div class="left">
+                    <div class="protocol">
+                        <h3>新世界志愿者协议</h3>
+                        <p>加入新世界志愿者的人员必须遵守中华人民共和国的相关法律法规，并且本着平等自愿的原则……</p>
+                        <div class="protocol-inner">
+                            <input type="button" value="∨ more" />
+                        </div>
+                    </div>
+                    <div class="protocol">
+                        <h3>新世界志愿者权利</h3>
+                        <p>加入新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</p>
+                        <div class="protocol-inner">
+                            <input type="button" value="∨ more" />
+                        </div>
+                    </div>
+                    <div class="protocol">
+                        <h3>更多条款</h3>
+                        <div class="protocol-inner">
+                            <input type="button" value="∨ more" />
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <form>
+                        <div>
+                            <input type="text" placeholder="姓名：" class="info-name" />
+                            <input type="text" placeholder="年龄：" class="info-age" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="联系方式：" class="info-phone" />
+                            <input type="text" placeholder="联系地址：" class="info-adress" />
+                        </div>
+                        <textarea rows="8" cols="90" placeholder="请简单描述您梦想的生活:" class="info-dream"></textarea>
+                        <br>
+                        <input type="button" value="申请提交" class="info-btn" />
+                    </form>
+                </div>
+                <div class="clear-float"></div>
+            </div>
+            <div class="clear-float"></div>
+        </div>
+        <div class="clear-float"></div>
+    </div>
+    <footer>
+        <div class="footer-up">
+            <div class="footer-inner">
+                <h2>联系我们</h2>
+                <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯也可以通过以下任何方式关注我们的动态</p>
+                <div class="close">
+                    <input type="text" placeholder="someone@email.com" class="contact-email" />
+                    <input type="button" value="提交" class="contact-btn" />
+                </div>
+                <div class="contact-icons">
+                    <img src="images/qq.png" alt="newlife" />
+                    <img src="images/weibo.png" alt="newlife" />
+                    <img src="images/pigeon.png" alt="newlife" />
+                    <img src="images/earth.png" alt="newlife" />
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-bottom-left">@2018新世界</span>
+            <span class="footer-bottom-right">Back to top</span>
+        </div>
+    </footer>
 </body>
 
 </html>
