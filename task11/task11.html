@@ -8,15 +8,18 @@
     <title>task11</title>
 </head>
 <style type="text/css">
-#queue{
-    height:20px;
-    background-color: #efefef;
-    margin-top: 20px;
-}
-span{
-    padding-right: 10px;
-}
+    #queue {
+        height: 30px;
+        margin-top: 20px;
+    }
+
+    button {
+        width: 30px;
+        height: 30px;
+        padding-right: 10px;
+    }
 </style>
+
 <body>
     <input type="text" id="value" />
     <input type="button" value="左侧入" id="inLeft" />
@@ -47,16 +50,22 @@ span{
             case "outRight":
                 outFormRight(array);
                 break;
+           /* case [id ^= "btn"]:
+                deleteItem(id);
+                break;*/
+        }
+        if(id.match("btn")){
+            deleteItem(id);
         }
         showQueue();
     }
     function inFormRight(array, textNode) {
         array.push(textNode.value);/*添加到数组尾部*/
-        textNode.value="";/*清空输入框*/
+        textNode.value = "";/*清空输入框*/
     }
-    function inFormLeft(array,textNode) {
+    function inFormLeft(array, textNode) {
         array.unshift(textNode.value);/*添加到数组的头部,并返回新数组的长度*/
-        textNode.value="";
+        textNode.value = "";
     }
     function outFormLeft(array) {
         if (array.length !== 0) {
@@ -66,20 +75,27 @@ span{
     }
     function outFormRight() {
         if (array.length !== 0) {
-            var len=array.length;
-             alert(array[len-1]);
+            var len = array.length;
+            alert(array[len - 1]);
             array.length--;//移除并返回数组的最后一项
-           
+
         }
     }
-    function showQueue(){
-        var node=document.getElementById("queue");
-        s="";
+    function showQueue() {
+        var node = document.getElementById("queue");
+        s = "";
+        var i = 0;
         array.forEach(element => {
-          
-           s+= '<span>'+element+'</span>';
+
+            s += '<button id=' + "btn" + i + '>' + element + '</button>';
+            i++;
         });
-        node.innerHTML=s;
+        node.innerHTML = s;
+    }
+    function deleteItem(targetId) {
+        var index = targetId.substring(3);
+        index=parseInt(index);
+        array.splice(index, 1);/*要删除的第一项的位置和要删除的项数*/
     }
 </script>
 
