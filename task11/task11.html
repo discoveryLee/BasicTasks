@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task11</title>
+</head>
+<style type="text/css">
+#queue{
+    height:20px;
+    background-color: #efefef;
+    margin-top: 20px;
+}
+span{
+    padding-right: 10px;
+}
+</style>
+<body>
+    <input type="text" id="value" />
+    <input type="button" value="左侧入" id="inLeft" />
+    <input type="button" value="右侧入" id="inRight" />
+    <input type="button" value="左侧出" id="outLeft" />
+    <input type="button" value="右侧出" id="outRight" />
+    <div id="queue">
+    </div>
+</body>
+<script type="text/javascript">
+    var array = [];
+    document.addEventListener("click", confirmId, false);
+    function confirmId(e) {
+        e = e || window.e;
+        var id = e.target.id;
+        switch (id) {
+            case "inLeft":
+                var textNode = document.getElementById("value");
+                inFormLeft(array, textNode);
+                break;
+            case "inRight":
+                var textNode = document.getElementById("value");
+                inFormRight(array, textNode);
+                break;
+            case "outLeft":
+                outFormLeft(array);
+                break;
+            case "outRight":
+                outFormRight(array);
+                break;
+        }
+        showQueue();
+    }
+    function inFormRight(array, textNode) {
+        array.push(textNode.value);/*添加到数组尾部*/
+        textNode.value="";/*清空输入框*/
+    }
+    function inFormLeft(array,textNode) {
+        array.unshift(textNode.value);/*添加到数组的头部,并返回新数组的长度*/
+        textNode.value="";
+    }
+    function outFormLeft(array) {
+        if (array.length !== 0) {
+            var item = array.shift();//移除并返回数组的第一项
+            alert(item);
+        }
+    }
+    function outFormRight() {
+        if (array.length !== 0) {
+            var len=array.length;
+             alert(array[len-1]);
+            array.length--;//移除并返回数组的最后一项
+           
+        }
+    }
+    function showQueue(){
+        var node=document.getElementById("queue");
+        s="";
+        array.forEach(element => {
+          
+           s+= '<span>'+element+'</span>';
+        });
+        node.innerHTML=s;
+    }
+</script>
+
+</html>
