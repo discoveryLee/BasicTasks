@@ -1,10 +1,32 @@
-nav,
+body{
+    margin:0;
+    min-width: 1280px;
+}
 .login {
+    float:left;
+    height:50px;
+    line-height: 50px;
+}
+nav{
     float: right;
+    height:50px;
+}
+header{
+    height:50px;
+}
+.logo,
+.web-name{
+    vertical-align: middle;
+    font-size: 23px;
+    color: #606060;
+}
+.logo{
+    margin-left: 30px;
 }
 
 .image {
     position: relative;
+    
 }
 
 .img1 {
@@ -49,16 +71,23 @@ nav,
 }
 
 .web-name {
-    font-size: 25px;
+    font-size: 23px;
 }
 
-nav>a {
-    margin-right: 20px;
+nav>a{
+    display:block;
+    float:left;
     text-decoration: none;
     color: #b6b6b6;
     font-family: "SimHei";
+    padding: 15px 23px;
 }
 
+a:first-child,
+a:hover{
+    color: #e74f4d;
+    border-bottom: 3px solid #e74f4d;
+}
 .login {
     color: #fa1515;
     font-family: "SimHei";
@@ -93,6 +122,7 @@ nav>a {
 }
 .icon-bar {
     height: 250px;
+    min-width: 750px;
     text-align: center;
 }
 
@@ -149,6 +179,20 @@ nav>a {
 select {
     width: 235px;
     height: 36px;
+    border:none;
+    padding: 5px;
+    background-color: transparent;
+    color:#c1c1c1;
+    -webkit-appearance: none;/*去掉下拉三角*/
+}
+.select{
+    width:236px;
+    height: 36px;
+    background: #fff url(images/arraw.png) no-repeat 95% 50%;
+    /*background-image: url("images/arraw.png");
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    background-color: #fff;*/
 }
 .search{
     color: #fff;
@@ -157,6 +201,10 @@ select {
 }
 .artists{
     float: left;
+}
+.onshow{
+    font-size: 20px;
+    letter-spacing: 1em;
 }
 .clear-float{
     clear: both;
@@ -197,6 +245,7 @@ select {
     height:100%;
     color:#fff;
     text-align: center;
+    width:840px;
     background-image: url("images/workers.jpg");
     background-size:100% 100%;
     overflow: hidden;/* 触发BFC*/
@@ -267,8 +316,20 @@ select {
     color: #fff;
 }
 .new-time-right{
+    position: relative;
+    background: url("images/viewer.jpg") no-repeat 100% 100%;
+    background-size: 100% 100%;
     width:34%;
 }
+.arraw-right{
+    position: absolute;
+    left:-1px;
+    bottom:50%;
+    width:26px;
+    height:32px;
+    background-image: url("images/arraw-r.png")
+}
+
 [class^="newtime-getmore"]{
     width:180px;
     height: 50px;
@@ -285,10 +346,10 @@ select {
     color: #e94f4f;
     font-size:20px;
 }
-.img-viewer{
+/*.img-viewer{
     width:100%;
     height:100%;
-}
+}*/
 .hr2{
     border-top: 2px solid #e94f4f;
 }
@@ -452,3 +513,23 @@ transform: translate(-50%,-50%);
     display: inline-block;
     border-bottom: #e94f4f;
 }*/
+.section-one{
+    width:100%;
+    height:700px;
+    background-image: url("images/img1.jpg");
+    background-size: 100% 100%;
+}
+.flex{
+    display: flex;/*弹性布局*/
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 80px;
+}
+.arraw{
+    position: absolute;
+    right:-241px;
+    bottom:50%;
+    width: 26px;
+    height: 32px;
+    background-image: url("images/white_arraw.png");
+}
