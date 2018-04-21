@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>栅格化</title>
+</head>
+<style type="text/css">
+    .grid-container {
+        min-width: 768px;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    /*-- our cleafix hack -- */
+
+    .row:before,
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    [class*='col-'] {
+        float: left;
+        min-height: 1px;
+        width: 8.33%;
+        /*-- our gutter -- */
+        padding: 12px;
+        background-color: #FFDCDC;
+    }
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 24.99%;
+    }
+
+    .col-4 {
+        width: 33.32%;
+    }
+
+    .col-5 {
+        width: 41.65%;
+    }
+
+    .col-6 {
+        width: 49.98%;
+    }
+
+    .col-7 {
+        width: 58.31%;
+    }
+
+    .outline,
+    .outline * {
+        outline: 1px solid #F6A1A1;
+    }
+
+    /*-- some extra column content styling --*/
+
+    [class*='col-']>p {
+        background-color: #FFC2C2;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="grid-container outline">
+        <div class="row">
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+            <div class="col-1">
+                <p>col-1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <p>col-2</p>
+            </div>
+            <div class="col-2">
+                <p>col-2</p>
+            </div>
+            <div class="col-2">
+                <p>col-2</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p>col-3</p>
+            </div>
+            <div class="col-3">
+                <p>col-3</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
