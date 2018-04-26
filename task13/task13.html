@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task13</title>
+</head>
+<style type="text/css">
+    #queue {
+        height: 110px;
+        margin-top: 20px;
+    }
+
+    #queue::before,
+    #queue::after {
+        content: "";
+        display: table;
+    }
+
+    #queue::after {
+        clear: both;
+    }
+
+    [class^="div-"] {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 30px;
+        min-height: 10px;
+        padding-right: 10px;
+        background-color: #f00;
+        border: none;
+        margin: 5px;
+    }
+</style>
+
+<body>
+    <input type="text" id="value" />
+    <input type="button" value="左侧入" id="inLeft" />
+    <input type="button" value="右侧入" id="inRight" />
+    <input type="button" value="左侧出" id="outLeft" />
+    <input type="button" value="右侧出" id="outRight" />
+    <input type="button" value="排序" id="sort" />
+    <div id="queue">
+    </div>
+    <div id="ordered-queue">
+    </div>
+    <script type="text/javascript">
+        var array = [];
+        document.addEventListener("click", confirmId, false);
+        function confirmId(e) {
+            e = e || window.e;
+            var id = e.target.id;
+            var classname = e.target.className;
+            switch (id) {
+                case "inLeft":
+                    var textNode = document.getElementById("value");
+                    inFormLeft(array, textNode);
+                    showQueue(array, "queue");
+                    break;
+                case "inRight":
+                    var textNode = document.getElementById("value");
+                    inFormRight(array, textNode);
+                    showQueue(array, "queue");
+                    break;
+                case "outLeft":
+                    outFormLeft(array);
+                    showQueue(array, "queue");
+                    break;
+                case "outRight":
+                    outFormRight(array);
+                    showQueue(array, "queue");
+                    break;
+                case "sort":
+                    var arr = sort(array);
+                    showQueue(arr,"ordered-queue");
+                    break;
+                /* case [id ^= "btn"]:
+                     deleteItem(id);
+                     break;*/
+            }
+            if (classname.match("div-")) {
+                deleteItem(classname);
+                showQueue(array, "queue");
+            }
+        }
+        function inFormRight(array, textNode) {
+            var val = textNode.value;
+            if (isLegal(val, array) === true) {
+                array.push(val);/*添加到数组尾部*/
+            }
+            textNode.value = "";/*清空输入框*/
+        }
+        function inFormLeft(array, textNode) {
+            var val = textNode.value;
+            if (isLegal(val, array) === true) {
+                array.unshift(val);/*添加到数组的头部,并返回新数组的长度*/
+            }
+            textNode.value = "";
+        }
+        function outFormLeft(array) {
+            if (array.length !== 0) {
+                var item = array.shift();//移除并返回数组的第一项
+                alert(item);
+            }
+        }
+        function outFormRight() {
+            if (array.length !== 0) {
+                var len = array.length;
+                alert(array[len - 1]);
+                array.length--;//移除并返回数组的最后一项
+
+            }
+        }
+        function showQueue(arr, nodeId) {//在node节点下显示
+            var node = document.getElementById(nodeId);
+            s = "";
+            var i = 0;
+            arr.forEach(element => {
+
+                s += '<div class=' + "div-" + i + ' ' + 'style="height:' + element + 'px"' + '>' + '</div>';
+                i++;
+            });
+            node.innerHTML = s;
+
+        }
+        function deleteItem(targetClassname) {
+            var index = targetClassname.substring(3);
+            index = parseInt(index);
+            array.splice(index, 1);/*要删除的第一项的位置和要删除的项数*/
+        }
+        //限制输入的数字在10-100,且队列长度最大为60
+        function isLegal(value, array) {
+            if (value < 10 || value > 100) {
+                alert("输入的数字必须在10~100之间");
+                return false;
+            } else if (array.length >= 60) {
+                alert("队列长度最大为60");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        //插入排序
+        function sort(oldArray) {
+            var arr = oldArray.slice();//不在原数组上操作
+            for (var j = 1; j < arr.length; j++) {
+                var tmp = arr[j];
+                for (var k = j; k > 0 && tmp > arr[k - 1]; k--) {
+                    arr[k] = arr[k - 1];
+                }
+                arr[k] = tmp;
+                //showQueue("ordered-queue");
+                /*var now = new Date().getTime();   
+                while(new Date().getTime() - now < 3000){} */
+            }
+            return arr;
+        }
+
+    </script>
+</body>
+
+
+</html>
