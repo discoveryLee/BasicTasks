@@ -73,8 +73,8 @@
                     showQueue(array, "queue");
                     break;
                 case "sort":
-                    var arr = sort(array);
-                    showQueue(arr,"ordered-queue");
+                    var trans = sort(array);
+                    act(trans, "ordered-queue");
                     break;
                 /* case [id ^= "btn"]:
                      deleteItem(id);
@@ -142,23 +142,47 @@
                 return true;
             }
         }
-        
+
         //插入排序
         function sort(oldArray) {
             var arr = oldArray.slice();//不在原数组上操作
+            var transf = [];
             for (var j = 1; j < arr.length; j++) {
                 var tmp = arr[j];
                 for (var k = j; k > 0 && tmp > arr[k - 1]; k--) {
                     arr[k] = arr[k - 1];
+                    //console.log("push前",arr);
+                    var tempArr=arr.slice();//必须存副本，指向的地址就不一样了，否则会被后来push的覆盖，
+                    transf.push(tempArr);//记录过程
+                    //console.log("push后",arr);
+                    //console.log(transf);
                 }
                 arr[k] = tmp;
+                tempArr=arr.slice();
+                transf.push(tempArr);//记录过程
                 //showQueue("ordered-queue");
                 /*var now = new Date().getTime();   
                 while(new Date().getTime() - now < 3000){} */
             }
-            return arr;
+            return transf;
         }
-
+        var cur=0;
+        function act(transf) {
+            var transfLen = transf.length;
+           // var int = self.setInterval(cur = fn(transf, cur), 100);这样写只会执行一次，fn() 是个函数调用，函数调用就会有返回值
+            int=self.setInterval(fn,100,transf);//func,周期（ms）,param1,param2...
+           
+        }
+         //为transf数组的每个子数组执行fn函数
+         
+        function fn(transf) {
+            showQueue(transf[cur++], "ordered-queue");
+            if (cur === transf.length) {
+                window.clearInterval(int);
+                cur=0;//全局变量cur重置
+                console.log("clearInterval")
+            }
+        }
     </script>
 </body>
 
