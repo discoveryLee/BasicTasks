@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单联动</title>
+</head>
+<style type="text/css">
+    div {
+        margin: 10px;
+    }
+
+    .work-place {
+        visibility: hidden;
+    }
+</style>
+
+<body>
+    <form>
+        <div class="radio">
+            <label>
+                <input type="radio" checked name="category" id="stu" value="0">在校生
+            </label>
+            <label>
+                <input type="radio" name="category" id="gra-stu" value="1">非在校生
+            </label>
+        </div>
+        <div class="city-school">
+            <label>学校
+                <select id="city">
+                    <option disabled selected>请选择城市</option>
+                    <option value="0">北京</option>
+                    <option value="1">天津</option>
+                    <option value="2">上海</option>
+                </select>
+                <select id="school">
+                    <option disabled selected>请选择学校</option>
+                </select>
+            </label>
+        </div>
+        <div class="work-place">
+            <label>就业单位
+                <input type="text" id="crop">
+            </label>
+        </div>
+    </form>
+    <script type="text/javascript">
+        var stuRadio = document.getElementById("stu");
+        var graStuRadio = document.getElementById("gra-stu");
+        var citySelect = document.getElementById("city");
+        var schoolSelect = document.getElementById("school");
+        var workPlace = document.getElementsByClassName("work-place")[0];
+        var cityAndSchool = document.getElementsByClassName("city-school")[0];
+        schools = [];
+        schools[0] = ['北京大学', '北京邮电大学', '清华大学'];
+        schools[1] = ['天津大学', '河北工业大学'];
+        schools[2] = ['复旦大学', '同济大学'];
+
+        document.addEventListener('click', confirmId, false);
+        citySelect.addEventListener('change', setSchool, false);
+        function confirmId(e) {
+            var e = e || window.e;
+            var id = e.target.id;
+            switch (id) {
+                case "stu":
+                    if (stuRadio.checked) {
+                        cityAndSchool.style.cssText = "visibility:visible";
+                        workPlace.style.cssText = "visibility:hidden";
+                    }
+                    break;
+                case "gra-stu":
+                    if (graStuRadio.checked) {
+                        cityAndSchool.style.cssText = "visibility:hidden";
+                        workPlace.style.cssText = "visibility:visible";
+                    }
+                    break;
+            }
+        }
+        function setSchool() {
+            schoolSelect.options.length = 0;           //把select对象的所有option清除掉
+            var cityValue = citySelect.value;//取得城市选定的值
+           
+            if (typeof (schools[cityValue]) == 'undefined') {
+                return;
+            }
+            for (var i = 0; i < schools[cityValue].length; i++) {
+                console.log(schools[cityValue].length);
+                schoolSelect.options.add(new Option(schools[cityValue][i], i));
+            }
+        }
+    </script>
+</body>
+
+</html>
