@@ -35,8 +35,7 @@ var aqiData = [
   //先排序
   for(var j=1;j<aqiData.length;j++){
     var tmp=aqiData[j];
-    var k;
-    for(k=j;k>0&& tmp[1]>aqiData[k-1][1];k--){
+    for(var k=j;k>0&& tmp[1]>aqiData[k-1][1];k--){
       aqiData[k]=aqiData[k-1];
     }
     aqiData[k]=tmp;
