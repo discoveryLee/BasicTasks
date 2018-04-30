@@ -79,10 +79,10 @@
             }
         }
         function setSchool() {
-            schoolSelect.options.length = 0;           //把select对象的所有option清除掉
+            schoolSelect.options.length = 0; //把select对象的所有option清除掉
             var cityValue = citySelect.value;//取得城市选定的值
            
-            if (typeof (schools[cityValue]) == 'undefined') {
+            if (schools[cityValue]) {
                 return;
             }
             for (var i = 0; i < schools[cityValue].length; i++) {
