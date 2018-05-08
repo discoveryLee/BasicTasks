@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二叉树遍历</title>
+    <style type="text/css">
+        div {
+            /* float: left; */
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //二叉树节点
+        function treeNode(lchild, rchild, val) {
+            this.leftChild = lchild;
+            this.rightChild = rchild;
+            this.value = val;
+        }
+
+        function createDiv(parentNode) {
+            if (parentNode.leftChild !== null) {
+                parentNode.innerHTML = '<div></div>';
+            }
+            if (parentNode.rightChild !== null) {
+                parentNode.innerHTML = '<div></div>';
+            }
+
+        }
+        //先序遍历
+        function preOrder(header) {
+            if (header !== null) {
+                console.log(header.value);
+                preOrder(header.leftChild);
+                preOrder(header.rightChild);
+            }
+
+        }
+        //中序遍历
+        function inOrder(header) {
+            if (header !== null) {
+                inOrder(header.leftChild);
+                console.log(header.value);
+                inOrder(header.rightChild);
+            }
+
+        }
+        //后序遍历
+        function lastOrder(header) {
+            if (header !== null) {
+                lastOrder(header.leftChild);
+                lastOrder(header.rightChild);
+                console.log(header.value);
+            }
+
+        }
+        let treeNode1 = new treeNode(null, null, 1);
+        let treeNode2 = new treeNode(null, null, 2);
+        let treeNode3 = new treeNode(null, null, 3);
+        let treeNode4 = new treeNode(treeNode2, treeNode1, 4);
+        let treeNode5 = new treeNode(treeNode4, treeNode3, 5);
+        //treeNode5.preOrder();全局中的函数(无参情况下)，treeNode5这样调为啥不行preOrder is not a function ???
+        preOrder(treeNode5);
+        inOrder(treeNode5);
+        lastOrder(treeNode5);
+    </script>
+</body>
+
+</html>
