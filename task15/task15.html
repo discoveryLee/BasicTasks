@@ -8,14 +8,80 @@
     <title>二叉树遍历</title>
     <style type="text/css">
         div {
-            /* float: left; */
-            padding: 10px;
+            margin: 5px;
+            padding: 0;
+            background-color: #fff;
+        }
+        
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*定义项目在交叉轴上的位置*/
+            /*使用flex布局 */
+            width: 560px;
+            height: 360px;
+            border: solid 1px #000;
+        }
+        
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 320px;
+            border: solid 1px #f00;
+        }
+        
+        .container-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 280px;
+            border: solid 1px #0f0;
+        }
+        
+        .container-3 {
+            width: 35px;
+            height: 240px;
+            border: solid 1px #00f;
         }
     </style>
 </head>
 
 <body>
+    <div class="main" id="0">
+        <div class="container-1" id="1">
+            <div class="container-2" id="3">
+                <div class="container-3" id="7"></div>
+                <div class="container-3" id="8"></div>
+            </div>
+            <div class="container-2" id="4">
+                <div class="container-3" id="9"></div>
+                <div class="container-3" id="10"></div>
+            </div>
+        </div>
+        <div class="container-1" id="2">
+            <div class="container-2" id="5">
+                <div class="container-3" id="11"></div>
+                <div class="container-3" id="12"></div>
+            </div>
+            <div class="container-2" id="6">
+                <div class="container-3" id="13"></div>
+                <div class="container-3" id="14"></div>
+            </div>
+        </div>
+    </div>
+    <button id="showPre">先序</button>
+    <button id="showIn">中序</button>
+    <button id="showLast">后序</button>
     <script type="text/javascript">
+        let container = document.getElementsByClassName("main");
+        //console.log(container);
+        let preOrderNodes = [],
+            inOrderNodes = [],
+            lastOrderNodes = [];
         //二叉树节点
         function treeNode(lchild, rchild, val) {
             this.leftChild = lchild;
@@ -23,29 +89,47 @@
             this.value = val;
         }
 
-        function createDiv(parentNode) {
-            if (parentNode.leftChild !== null) {
-                parentNode.innerHTML = '<div></div>';
+        function colorChange(id) {
+            //console.log(id);
+            let divs = document.getElementsByTagName("div");
+            // console.log(divs);
+            for (let i = 0, len = divs.length; i < len; i++) {
+                divs[i].style.cssText = "background-color:'#fff';"
             }
-            if (parentNode.rightChild !== null) {
-                parentNode.innerHTML = '<div></div>';
-            }
-
+            let curDiv = document.getElementById(id);
+            curDiv.style.cssText = "background-color:yellow;";
+            // if (curDiv.style.backgroundColor == "yellow") {
+            //     curDiv.style.cssText = "background-color:#fff";
+            // }
         }
+        // //先序遍历 这样加setTimeout为啥顺序就不对了
+        // function preOrder(header) {
+        //     setTimeout(() => {
+        //         if (header !== null) {
+        //             console.log(header.value);
+        //             colorChange(header.value);
+        //             preOrder(header.leftChild);
+        //             preOrder(header.rightChild);
+        //         }
+        //     }, 1000);
+
+        // }
+
         //先序遍历
         function preOrder(header) {
             if (header !== null) {
                 console.log(header.value);
+                preOrderNodes.push(header.value);
                 preOrder(header.leftChild);
                 preOrder(header.rightChild);
             }
-
         }
         //中序遍历
         function inOrder(header) {
             if (header !== null) {
                 inOrder(header.leftChild);
                 console.log(header.value);
+                inOrderNodes.push(header.value);
                 inOrder(header.rightChild);
             }
 
@@ -56,18 +140,67 @@
                 lastOrder(header.leftChild);
                 lastOrder(header.rightChild);
                 console.log(header.value);
+                lastOrderNodes.push(header.value);
             }
 
         }
-        let treeNode1 = new treeNode(null, null, 1);
-        let treeNode2 = new treeNode(null, null, 2);
-        let treeNode3 = new treeNode(null, null, 3);
-        let treeNode4 = new treeNode(treeNode2, treeNode1, 4);
-        let treeNode5 = new treeNode(treeNode4, treeNode3, 5);
+        let treeNode14 = new treeNode(null, null, 14);
+        let treeNode13 = new treeNode(null, null, 13);
+        let treeNode12 = new treeNode(null, null, 12);
+        let treeNode11 = new treeNode(null, null, 11);
+        let treeNode10 = new treeNode(null, null, 10);
+
+        let treeNode9 = new treeNode(null, null, 9);
+        let treeNode8 = new treeNode(null, null, 8);
+        let treeNode7 = new treeNode(null, null, 7);
+        let treeNode6 = new treeNode(treeNode13, treeNode14, 6);
+        let treeNode5 = new treeNode(treeNode11, treeNode12, 5);
+
+        let treeNode4 = new treeNode(treeNode9, treeNode10, 4);
+        let treeNode3 = new treeNode(treeNode7, treeNode8, 3);
+        let treeNode2 = new treeNode(treeNode5, treeNode6, 2);
+        let treeNode1 = new treeNode(treeNode3, treeNode4, 1);
+        let treeNode0 = new treeNode(treeNode1, treeNode2, 0);
         //treeNode5.preOrder();全局中的函数(无参情况下)，treeNode5这样调为啥不行preOrder is not a function ???
-        preOrder(treeNode5);
-        inOrder(treeNode5);
-        lastOrder(treeNode5);
+        // preOrder(treeNode0);
+        // inOrder(treeNode5);
+        // lastOrder(treeNode5);
+        let i = 0;
+
+        function act(arr) {
+            console.log("arr.length", arr.length);
+            int = self.setInterval(fn, 1000, arr);
+        }
+
+        function fn(arr) {
+            colorChange(arr[i++]);
+            if (i === arr.length) {
+                window.clearInterval(int);
+                i = 0; //全局变量cur重置
+                console.log("clearInterval")
+            }
+        }
+
+        function confirmBtn() {
+            var event = event || window.event;
+            let targetId = event.target.id;
+            switch (targetId) {
+                case "showPre":
+                    preOrder(treeNode0);
+                    act(preOrderNodes);
+                    break;
+                case "showIn":
+                    inOrder(treeNode0);
+                    act(inOrderNodes);
+                    break;
+                case "showLast":
+                    lastOrder(treeNode0);
+                    act(lastOrderNodes);
+                    break;
+                default:
+            }
+        }
+        document.addEventListener("click", confirmBtn, false);
     </script>
 </body>
 
