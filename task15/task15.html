@@ -162,9 +162,7 @@
         let treeNode1 = new treeNode(treeNode3, treeNode4, 1);
         let treeNode0 = new treeNode(treeNode1, treeNode2, 0);
         //treeNode5.preOrder();全局中的函数(无参情况下)，treeNode5这样调为啥不行preOrder is not a function ???
-        // preOrder(treeNode0);
-        // inOrder(treeNode5);
-        // lastOrder(treeNode5);
+        //参考JavaScript高级程序设计P147。treeNode里需要加上this.preOrder=preOrder;不能加限定域。
         let i = 0;
 
         function act(arr) {
