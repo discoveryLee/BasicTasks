@@ -1,0 +1,58 @@
+ * {
+     padding: 20px;
+ }
+ 
+ .container {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     /*侧轴对齐方式*/
+     /* flex-wrap: wrap; 最开始不能设置换行，不然4不会在第一个*/
+     border: 1px solid #000;
+ }
+ 
+ .container>div {
+     width: 150px;
+     box-sizing: border-box;
+     margin-bottom: 10px;
+ }
+ 
+ .one,
+ .two,
+ .three {
+     border: 1px solid #f00;
+ }
+ 
+ .one {
+     height: 120px;
+ }
+ 
+ .two {
+     height: 100px;
+ }
+ 
+ .three {
+     height: 40px;
+ }
+ 
+ .four {
+     height: 200px;
+     border: 1px solid #00f;
+ }
+ 
+ @media all and (max-width:640px) {
+     .container {
+         display: flex;
+         flex-flow: row wrap;
+         justify-content: space-between;
+         align-items: flex-start;
+         /*顶端对齐*/
+     }
+     .four {
+         order: -1;
+         /*优先显示4模块*/
+     }
+     /* .three {
+                align-self: flex-start;
+            } */
+ }
