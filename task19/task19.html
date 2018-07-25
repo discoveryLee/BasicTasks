@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多叉树增删改</title>
+    <style type="text/css">
+        html,
+        body {
+            min-width: 1350px;
+        }
+        
+        * {
+            font-size: 12px;
+        }
+        
+        div {
+            border: solid 1px #000;
+            margin: 5px;
+            background-color: #fff;
+        }
+        /* .cat, */
+        
+        .super,
+        .cat-1,
+        .human,
+        .campus,
+        .apple,
+        .program,
+        .note,
+        .bement {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        
+        .campus *,
+        .apple *,
+        .human *,
+        .program>* {
+            width: 70px;
+            height: 60px;
+            margin: 5px 2px;
+        }
+        
+        .phone {
+            width: 80px;
+            height: 70px;
+        }
+        
+        .fish {
+            width: 230px;
+            height: 80px;
+        }
+        
+        .cat-2 {
+            height: 50px;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="super" id="root">Super
+        <div class="cat-1">
+            Cat
+            <div class="apple">
+                Apple
+                <div class="pear">Pear</div>
+                <div class="pig">Pig</div>
+                <div class="cola">Cola</div>
+                <div class="soccer">Soccer</div>
+            </div>
+            <div class="phone">
+                Phone
+            </div>
+            <div class="campus">
+                Campus
+                <div class="book">Book</div>
+                <div class="school">School</div>
+            </div>
+        </div>
+        <div class="note">
+            Note
+            <div class="human">
+                Human
+                <div class="code">Code</div>
+                <div class="man">Man</div>
+            </div>
+            <div class="program">
+                Program
+                <div class="bement">Bement
+                    <div class="cat-2">Cat</div>
+                </div>
+                <div class="glass">Glass</div>
+            </div>
+        </div>
+        <div class="fish">Fish</div>
+    </div>
+    <button id="deep-first">深度优先遍历</button>
+    <button id="breadth-first">广度优先遍历</button>
+    <input type="text" id="valueForSearch">
+    <button id="search-deep-first">深度优先查询</button>
+    <button id="search-breadth-first">广度优先查询</button>
+    <input id="delete" type="button" value="删除当前选中节点">
+    <input type="text" id="valueForAdd"><input id="add" type="button" value="增加节点">
+    <script type="text/javascript" src="task19.js">
+    </script>
+</body>
+
+</html>
