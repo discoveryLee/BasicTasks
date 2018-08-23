@@ -1,0 +1,96 @@
+.container {
+    /* border-collapse: collapse; */
+    width: 300px;
+    margin: 0 auto;
+}
+
+.statistics tr:nth-child(2n+3) {
+    background-color: #ddd;
+}
+
+.statistics tr:first-child {
+    color: #fff;
+    background-color: #000;
+}
+
+.statistics tr[class*="top-"] {
+    color: #d00;
+}
+
+.username:focus {
+    width: 120%;
+    animation: mymove 3s linear;
+}
+
+@keyframes mymove {
+    from {
+        width: 100%
+    }
+    to {
+        width: 120%
+    }
+}
+
+.banner {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    /* background-color: #00f; */
+    overflow: hidden;
+}
+
+.banner .slider li {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    list-style: none;
+}
+
+.banner .slider li:nth-child(1) {
+    background-color: #00f;
+    /* z-index: auto; */
+    /*不知道为什么设置了之后就不能切换了 */
+}
+
+.banner .slider li:nth-child(2) {
+    background-color: #f00;
+    /* z-index: auto; */
+}
+
+.banner .slider li:nth-child(3) {
+    background-color: #0f0;
+    /* z-index: auto; */
+}
+
+.banner>.show {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.banner a {
+    display: inline-block;
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, .7);
+    text-align: center;
+}
+
+li:target {
+    position: absolute;
+    z-index: 5;
+    animation: scroll 500ms linear;
+}
+
+@keyframes scroll {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0%;
+    }
+}
