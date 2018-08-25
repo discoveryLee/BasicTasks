@@ -1,0 +1,55 @@
+ a {
+     display: flex;
+     flex-direction: row nowrap;
+     align-items: center;
+     text-decoration: none;
+ }
+ 
+ .tree-module {
+     width: 300px;
+     height: 400px;
+     margin: 0 auto;
+     border: 1px solid #000;
+     padding: 10px;
+ }
+ 
+ .nodebody-hidden * {
+     display: none;
+ }
+ 
+ .right-arrow,
+ .down-arrow {
+     display: inline-block;
+     margin-right: 6px;
+ }
+ 
+ .right-arrow {
+     width: 0;
+     height: 0;
+     border-left: 10px solid #6898c2;
+     border-top: 5px solid transparent;
+     border-bottom: 5px solid transparent;
+ }
+ 
+ .down-arrow {
+     width: 0;
+     height: 0;
+     border-top: 10px solid #6898c2;
+     border-left: 5px solid transparent;
+     border-right: 5px solid transparent;
+ }
+ 
+ .empty-arrow {
+     border-left: 10px solid transparent;
+ }
+ 
+ a~div {
+     padding-left: 20px;
+ }
+ 
+ .node-title {
+     font-family: "Microsoft YaHei UI";
+     font-size: 14px;
+     color: #6898c2;
+     line-height: 1.5em;
+ }
