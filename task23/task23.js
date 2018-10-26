@@ -51,7 +51,7 @@ var shipWidth;
 var shipHeight;
 var distance;
 var consoledom; //控制台
-var intervals = [];
+var interval;
 var infoBan; //信息面板
 window.onload = function() {
     //初始化
@@ -87,8 +87,10 @@ window.onload = function() {
 //信息面板
 function log(info) {
     let div = document.createElement('div');
-    div.appendChild(document.createTextNode(info))
+    div.appendChild(document.createTextNode(info));
     infoBan.appendChild(div);
+    if (infoBan.childNodes.length > 20) //最多显示20条log
+        infoBan.removeChild(infoBan.childNodes[0]);
 }
 //绘制宇宙和轨道
 function drawBackground(ctx) {
@@ -111,7 +113,7 @@ function drawBackground(ctx) {
 
 }
 //绘制飞船
-function makeShipDomCore(ship) {
+/*function makeShipDomCore(ship) {
     let x = -shipWidth * .5;
     let y = -50 - 1 * 40 - shipHeight;
     //ctx.save(); //保存
@@ -139,11 +141,40 @@ function makeShipDomCore(ship) {
     ctx.fillStyle = "#0f0";
     ctx.fillText(Math.round(ship.energy), x + shipWidth * .2, y + shipHeight * .8);
     //ctx.restore(); // 恢复canvas的状态，然后重绘下一帧 
-}
+}*/
+function makeShipDomCore(ship) {
+    let x = -shipWidth * .5;
+    let y = -50 - ship.orbit * 40 - shipHeight;
+    cacheCtx.save(); //保存
+    //console.log("x:" + x + " " + "y:" + y);
+    let r = shipHeight / 2;
+    cacheCtx.beginPath();
+    //ctx.rotate(Math.PI * .5);
+    cacheCtx.moveTo(x, y);
+    cacheCtx.lineTo(x + shipWidth, y);
 
+    cacheCtx.arc(x + shipWidth, y + r, r, 1.5 * Math.PI, 0.5 * Math.PI);
+
+    cacheCtx.moveTo(x + shipWidth, y + shipHeight);
+    cacheCtx.lineTo(x, y + shipHeight);
+
+    cacheCtx.arc(x, y + r, r, 0.5 * Math.PI, 1.5 * Math.PI);
+
+    cacheCtx.fillStyle = "#aaa";
+    cacheCtx.fill();
+
+    cacheCtx.beginPath();
+    cacheCtx.font = "16px Arial";
+    // ctx.textAlign = "center";
+    // ctx.textBadeLine = "middle";
+    cacheCtx.fillStyle = "#0f0";
+    cacheCtx.fillText(Math.round(ship.energy), x + shipWidth * .2, y + shipHeight * .8);
+    cacheCtx.restore(); // 恢复canvas的状态，然后重绘下一帧 
+
+}
 //========飞船飞行======
 //圆的标准方程:(x-canvas.width*0.5)^2+(y-canvas.height*0.5)^2=(50+i*distance)^2
-function makeShipDom(ship) {
+/*function makeShipDom(ship) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground(ctx);
     //ctx.restore();
@@ -164,8 +195,28 @@ function makeShipDom(ship) {
 
     //ctx.drawImage(cacheCanvas, 0, 0, canvas.width, canvas.height); //将缓存画布内容复制到屏幕画布上
     //cacheCtx.clearRect(0, 0, canvas.width, canvas.height); //每次更新清空缓存画布
-}
+}*/
+function makeShipDom(shipArray) {
+    //log(shipArray.length);
+    console.log("shipArray", shipArray);
+    if (shipArray != null && shipArray.length > 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        shipArray.forEach(function(obj) {
 
+            cacheCtx.save(); //保存画布原有状态
+            drawBackground(cacheCtx);
+            cacheCtx.translate(canvas.width * .5, canvas.height * .5); //更新canvas的原点(0,0)
+
+            cacheCtx.rotate(obj.deg); //弧度
+
+            makeShipDomCore(obj);
+            cacheCtx.restore(); // 恢复canvas的状态，然后重绘下一帧 
+
+        });
+        ctx.drawImage(cacheCanvas, 0, 0, canvas.width, canvas.height); //将缓存画布内容复制到屏幕画布上
+        cacheCtx.clearRect(0, 0, cacheCanvas.width, cacheCanvas.height); //每次更新清空缓存画布
+    }
+}
 
 function Ship(id, dom) {
     this.id = id; //飞船编号
@@ -177,6 +228,7 @@ function Ship(id, dom) {
     this.produce = 2; //能源产生速率
     this.deg = 0; //飞船的位置
     this.degv = 1; //飞行速度
+    this.orbit = random(1, 4); //飞船轨道
     //this.fly = fly; //动力系统
     //this.selfDestroy = destroy; //自爆系统
     //this.signalProcessing = signalProcessing; //信息接收处理系统
@@ -213,7 +265,10 @@ Ship.prototype.start = function() {
             log("error:飞船" + this.id + "正在飞行");
         } else {
             log("success:飞船" + this.id + "飞行成功");
-            intervals[this.id] = self.setInterval(flight(this), 500);
+            self.clearInterval(interval);
+            interval = self.setInterval(flight(space.objects), 100); //重启
+
+
         }
         this.isflying = true;
     }
@@ -224,13 +279,16 @@ Ship.prototype.stop = function() {
         } else {
             log("success:飞船" + this.id + "停飞成功");
 
-            intervals[this.id] = null;
+            //intervals[this.id] = null;
+            self.clearInterval(interval); //只要没有被销毁，就会一直update
+            interval = self.setInterval(flight(space.objects), 100); //重启，以更新space.objects的值
         }
         this.isflying = false;
     }
     //飞船销毁
 Ship.prototype.destroy = function() {
-        self.clearInterval(intervals[this.id]); //只要没有被销毁，就会一直update
+        self.clearInterval(interval); //只要没有被销毁，就会一直update
+        interval = self.setInterval(flight(space.objects), 100); //重启，以更新space.objects的值
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //cacheCtx.clearRect(0, 0, canvas.width, canvas.height);
         destroyShip(this);
@@ -436,17 +494,18 @@ function createShip(shipId) {
     //shipDom.id = shipId;
     var ship = new Ship();
     ship.id = shipId;
-    makeShipDom(ship);
+
     //spacedom.appendChild(shipDom);
     space.addObject(ship);
+    makeShipDom(space.objects);
     mediator.addSubscriber(ship);
     log("info:" + "飞船" + ship.id + "主体创建完毕");
 
 }
 //飞船飞行
-function flight(ship) {
+function flight(shipArray) {
     return function() {
-        makeShipDom(ship);
+        makeShipDom(shipArray);
     }
 }
 //销毁飞船
