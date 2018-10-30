@@ -11,7 +11,7 @@
     div {
         margin: 10px;
     }
-
+    
     .work-place {
         visibility: hidden;
     }
@@ -60,6 +60,7 @@
 
         document.addEventListener('click', confirmId, false);
         citySelect.addEventListener('change', setSchool, false);
+
         function confirmId(e) {
             var e = e || window.e;
             var id = e.target.id;
@@ -78,11 +79,12 @@
                     break;
             }
         }
+
         function setSchool() {
             schoolSelect.options.length = 0; //把select对象的所有option清除掉
-            var cityValue = citySelect.value;//取得城市选定的值
-           
-            if (schools[cityValue]) {
+            var cityValue = citySelect.value; //取得城市选定的值
+
+            if (!schools[cityValue]) {
                 return;
             }
             for (var i = 0; i < schools[cityValue].length; i++) {
