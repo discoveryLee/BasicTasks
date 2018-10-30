@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行星和飞船(二)</title>
+    <script src="task24.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .universe {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 75%;
+            height: 75%;
+            background: #000;
+        }
+        
+        .planet {
+            width: 150px;
+            height: 150px;
+            background: #00f;
+            border-radius: 50%;
+        }
+        
+        .console {
+            height: 25%;
+            width: 75%;
+            border: 3px solid rgb(17, 3, 3);
+            margin-top: .1em;
+            padding: .5em;
+        }
+        
+        .console input {
+            display: inline-block;
+            margin-left: .5em;
+        }
+        
+        .spaceship {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 6em;
+            height: 2em;
+            background: #aaa;
+            border-radius: 1em;
+            /* padding-top: .3em; */
+        }
+        
+        .info-ban {
+            float: right;
+            width: 25%;
+            height: 100%;
+            background-color: #aaa;
+            padding: .8em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="info-ban"></div>
+    <div class="universe">
+        <!-- <div class="planet"></div>
+        <div class="spaceship">1号-35%</div> -->
+        <canvas id="canvas">
+        </canvas>
+    </div>
+    <div class="console">
+        <form>
+            <div id="power-system">动力系统选择</label><label><input checked type="radio" name="power-system" value="0">前进号(速率30px/s,能耗5%/s)</label><label><input type="radio" name="power-system" value="1">奔腾号(速率50px/s,能耗7%/s)</label><label><input type="radio" name="power-system" value="2">越野号(速率80px/s,能耗9%/s)</div>
+            <div id="energy-system">能源系统选择</label><label><input checked type="radio" name="energy-system" value="0">劲量型(补充能源速度2%/s)</label><label><input type="radio" name="energy-system" value="1">光能型(补充能源速度2%/s)</label><label><input type="radio" name="energy-system" value="2">永久型(补充能源速度4%/s)</div>
+        </form>
+        <input type="button" value="发射新的飞船" id="newShip">
+        <!-- <label>对一号飞船下达指令:<input type="button" value="创建" id="launch"><input type="button" value="开始飞行" id="startFly"><input type="button" value="停止飞行" id="stopFly"><input type="button" value="销毁" id="destroy"></label> -->
+            </div>
+</body>
+
+</html>
