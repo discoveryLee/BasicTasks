@@ -14,17 +14,16 @@ var interval;
 var infoBan; //信息面板
 var powerRadio; //动力系统选择
 var energyRadio; //能源系统选择
-var adapter;
 window.onload = function() {
     //初始化
     consoledom = document.getElementsByClassName("console")[0];
     commander = new Commander();
-    adapter = new Adapter();
     infoBan = document.getElementsByClassName("info-ban")[0];
     //this.console.log(commander.count);
-    space = new Space();
-    space.run();
     mediator = new Mediator();
+    space = new Space();
+    space.addObject(mediator); //宇宙帮忙更新
+    space.run();
     document.getElementById("newShip").addEventListener('click', function() {
         commander.commandNewShip();
     }, false);
@@ -168,16 +167,13 @@ function Ship(id, powerSystemId, energySystemId) {
     this.id = id; //飞船编号
     this.isflying = false;
     this.energy = 100; //能源
-    //this.consume = 5; //能源消耗速率
-    //this.produce = 2; //能源产生速率
+
     this.deg = 0; //飞船的位置
     //this.degv = 1; //飞行速度
     getPowerSystem(powerSystemId, this); //动力系统
     getEnergySystem(energySystemId, this); //能源系统
     this.orbit = random(1, 4); //飞船轨道
-    //this.fly = fly; //动力系统
-    //this.selfDestroy = destroy; //自爆系统
-    //this.signalProcessing = signalProcessing; //信息接收处理系统
+    this.adapter = new Adapter(); // 适配器
 }
 Ship.prototype.update = function(time) {
         //console.log('time', time);
@@ -241,12 +237,14 @@ Ship.prototype.destroy = function() {
     }
     //接收消息
 Ship.prototype.receive = function(msg) {
-        console.log(msg);
-        msg = adapter.decode(msg);
+        msg = this.adapter.decode(msg);
+
         var message = JSON.parse(msg);
         if (message.id != this.id) { //消息主体不对，抛弃消息
             return;
         }
+        mediator.ack(message.ackId); //ackId即publish时包装的msgId
+        //console.log("消息" + message.ackId + "发送了ack");
         //执行命令
         if (message.command == 'start') {
             this.start();
@@ -295,17 +293,24 @@ Space.prototype.run = function() {
 Space.prototype.stop = function() {
         this.islive = false;
     }
-    //传输介质
+    //传输介质(改进后的BUS)
 function Mediator() {
-    this.subscribes = [];
+    this.subscribes = []; //接收消息的队列
+    this.ackList = []; //已经发送还没有ack的数据，格式 [消息id,消息内容,消息发送时间,是否确认]
+    this.msgId = 0;
 }
 //发布消息
 Mediator.prototype.publish = function(msg) {
+        var data = ((this.msgId << 8) | msg); //将msgId编码包装到消息里
+        this.ackList.push([this.msgId, msg, new Date().getTime(), false]);
+        //console.log("push之后ackList length：", this.ackList.length);
+        this.msgId++;
+
         var rand = Math.random();
-        //多次重试的功能，可以保证信息一定能够传递出去
-        while (rand < 0.1) {
-            log("发布的消息丢失...自动重发中...");
-            rand = Math.random();
+
+        if (rand < 0.1) {
+            log("发布的消息丢失...");
+            return;
         }
 
         var that = this;
@@ -313,9 +318,46 @@ Mediator.prototype.publish = function(msg) {
         setTimeout(function() {
             that.subscribes.forEach(function(item) {
                 //console.log("item", item);
-                item.receive(msg);
+                item.receive(data);
             });
         }, 300);
+    }
+    //确认消息收到
+Mediator.prototype.ack = function(ackId) {
+    //console.log("ackList", this.ackList);
+    for (var i = 0; i < this.ackList.length; i++) {
+        if (ackId == this.ackList[i][0]) {
+            this.ackList[i][3] = true; //标记为收到ack
+            //console.log("消息" + ackId + "收到了ack");
+            break;
+        }
+    }
+}
+Mediator.prototype.update = function() {
+        var republish = [];
+        var cnt = 0; //检查到的位置
+        for (var i = 0; i < this.ackList.length; i++) {
+            if (this.ackList[i][3] == false) {
+                if (new Date().getTime() - this.ackList[i][2] > 1000) { // 超时消息，记录下来需要重发
+                    republish.push(this.ackList[i]);
+                } else {
+                    this.ackList[cnt++] = this.ackList[i]; //还在存活期的消息
+                }
+            }
+        }
+
+        //先清理消息，再重发，因为重发时，如果再次失败，会再push；如果这两个代码块顺序对调，重发时新push的也会被清掉
+        // 清理无用的消息
+        while (this.ackList.length > cnt) {
+            //console.log("清理无用消息");
+            this.ackList.pop(); //removes the last element from an array 
+        }
+        //消息重发
+        for (var i = 0; i < republish.length; i++) {
+
+            log("未收到ack，重新发送消息...");
+            this.publish(republish[i][1]);
+        }
     }
     //添加消息接收者(订阅者)
 Mediator.prototype.addSubscriber = function(obj) {
@@ -332,7 +374,7 @@ Mediator.prototype.removeSubscriber = function(obj) {
 function Adapter() {}
 //将msg转化为二进制指令
 Adapter.prototype.encode = function(msg) {
-        //console.log(msg);
+        //console.log("encode之前", msg);
         msg = JSON.parse(msg);
         //console.log(msg);
         var data = msg.id;
@@ -351,22 +393,15 @@ Adapter.prototype.encode = function(msg) {
                 log("error command:" + msg);
                 return null;
         }
-        console.log(data);
+        //console.log("encode之后", data);
         return data;
     }
     //将二进制指令解码
 Adapter.prototype.decode = function(msg) {
         var data = {};
-        data.id = msg >> 4;
-        //data.command =
-        var number = 0;
-        for (let i = 0; i < 4; i++) {
-            number = number * 2 + msg & 1
-
-            msg = msg > 1;
-        }
-        console.log(number);
-        switch (number) {
+        data.ackId = msg >> 8;
+        data.id = (msg & 255) >> 4; //msg&255：只取后8位
+        switch (msg & 15) {
             case 1: //0001
                 data.command = 'start';
                 break;
@@ -380,12 +415,14 @@ Adapter.prototype.decode = function(msg) {
                 log("error command:" + msg);
                 return null;
         }
+        //console.log("decode之后：", data);
         return JSON.stringify(data);
     }
     //指挥官
 function Commander() {
     this.notebook = {}; //记录着飞船的信息,对象
     this.count = 0; //已发射飞船的数量
+    this.adapter = new Adapter(); // 适配器
 }
 //下达【开始飞行】命令
 Commander.prototype.commandRun = function(shipId) {
@@ -394,7 +431,7 @@ Commander.prototype.commandRun = function(shipId) {
             id: shipId,
             command: 'start'
         }
-        mediator.publish(adapter.encode(JSON.stringify(msg)));
+        mediator.publish(this.adapter.encode(JSON.stringify(msg)));
         //记录当前飞船状态，并修改控制面板
         var shipstate = this.notebook[shipId];
         shipstate[0] = true;
@@ -408,7 +445,7 @@ Commander.prototype.commandStop = function(shipId) {
             id: shipId,
             command: 'stop'
         }
-        mediator.publish(JSON.stringify(msg));
+        mediator.publish(this.adapter.encode(JSON.stringify(msg)));
         //记录当前飞船状态，并修改控制面板
         var shipstate = this.notebook[shipId];
         shipstate[0] = false;
@@ -423,7 +460,7 @@ Commander.prototype.commandDestroy = function(shipId) {
             id: shipId,
             command: 'destroy'
         }
-        mediator.publish(JSON.stringify(msg));
+        mediator.publish(this.adapter.encode(JSON.stringify(msg)));
         //清空控制面板
         consoledom.removeChild(this.notebook[shipId][1]);
         this.notebook[shipId] = null;
@@ -438,9 +475,10 @@ Commander.prototype.commandNewShip = function() {
         }
         this.count++;
         //创建飞船
-        var shipId = random(0, 100);
+        //shipid太大，二进制编码中左移4位就不够了，解码会出错，所以控制在0~3
+        var shipId = 0;
         while (!(this.notebook[shipId] == null || this.notebook[shipId] == undefined)) {
-            shipId = random(0, 100); //生成一个不存在的shipId
+            shipId++; //找到未被使用的shipId
         }
         let powerId, energyId;
         for (let i = 0; i < powerRadio.length; i++) {
