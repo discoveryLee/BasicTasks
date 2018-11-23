@@ -1,0 +1,65 @@
+.main {
+    width: 850px;
+    margin: auto;
+}
+
+.col-index span {
+    display: inline-block;
+    width: 3.08em;
+    text-align: center;
+}
+
+.row-index {
+    float: left;
+    width: 1.5em;
+    padding-top: 1.5em;
+    margin-right: .8em;
+}
+
+.row-index span {
+    float: left;
+    width: 100%;
+    height: 3em;
+    text-align: right;
+}
+
+.checkerboard {
+    border: solid 1px red;
+    border-collapse: collapse;
+}
+
+.checkerboard tr {
+    height: 3em;
+    border: solid 1px #555;
+}
+
+.checkerboard td {
+    width: 3em;
+    padding: 0;
+    border: solid 1px #555;
+}
+
+#commander,
+#exe-btn {
+    margin: 5px;
+}
+
+.commander {
+    float: right;
+}
+
+.up {
+    background: linear-gradient(#00f 30%, #f00 30%);
+}
+
+.down {
+    background: linear-gradient(#f00 70%, #00f 70%);
+}
+
+.left {
+    background: linear-gradient(to right, #00f 30%, #f00 30%);
+}
+
+.right {
+    background: linear-gradient(to right, #f00 70%, #00f 70%);
+}
