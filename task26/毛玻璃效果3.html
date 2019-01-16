@@ -17,12 +17,8 @@
             width: 800px;
             height: 400px;
             margin: 0 auto;
-        }
-        
-        .container,
-        .cover-layer::before {
             background: url("tiger.jpg") 0/cover;
-            /*把container的背景元素复制过来*/
+            overflow: hidden;
         }
         
         .cover-layer {
@@ -32,7 +28,7 @@
             transform: translate(-50%, -50%);
             width: 500px;
             height: 300px;
-            /* box-shadow: 0 0 300px rgba(0, 0, 0, .8); */
+            /* box-shadow: 0 0 50px rgba(0, 0, 0, .5); */
             /*效果不是很好*/
             box-shadow: 0 0 100px rgba(0, 0, 0, .3), -150px -50px 100px rgba(0, 0, 0, .3), -150px 50px 100px rgba(0, 0, 0, .3), 150px -50px 100px rgba(0, 0, 0, .3);
         }
