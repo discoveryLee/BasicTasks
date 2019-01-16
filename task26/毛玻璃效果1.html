@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>毛玻璃效果</title>
+    <style type="text/css">
+        .container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            background: url("tiger.jpg") 0/cover;
+        }
+        
+        .cover-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 300px;
+            /* background-color: #fff;
+            opacity: .3; */
+            /*使用opacity的话字体会继承透明的属性*/
+            background-color: rgba(255, 255, 255, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <img class="img-tiger" src="tiger.jpg" alt="image tiger"> -->
+        <div class="cover-layer">
+            <p>The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself, with desire for what its monstrous laws have made monstrous and unlawful.” — Oscar Wilde,
+                The Picture of Dorian Gray</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
