@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>沿环形路径平移的旋转</title>
+    <style type="text/css">
+        h1 {
+            text-align: center;
+        }
+        
+        .path {
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            border-radius: 50%;
+            background-color: #e6bf11;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        
+        @keyframes spin-reverse {
+            from {
+                transform: rotate(1turn);
+            }
+        }
+        
+        .avatar {
+            display: block;
+            margin: 0 auto;
+            width: 50px;
+            /* height: 50px; 另一个会按比例自动缩放*/
+            border-radius: 25px;
+            animation: spin-reverse 3s infinite linear;
+        }
+        
+        .avatar-container {
+            transition: translate(-50%, -50%);
+            animation: spin 3s infinite linear;
+            transform-origin: 50% 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>需要两个元素的解决方案</h1>
+    <div class="path">
+        <div class="avatar-container">
+            <img src="adamcatlace.jpg" alt="avatar" class="avatar">
+        </div>
+    </div>
+</body>
+
+</html>

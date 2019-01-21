@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>沿环形路径平移的旋转</title>
+    <style type="text/css">
+        h1 {
+            text-align: center;
+        }
+        
+        .path {
+            position: relative;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            border-radius: 50%;
+            background-color: #e6bf11;
+            overflow: hidden;
+            /*触发BFC*/
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn);
+            }
+            to {
+                transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
+            }
+        }
+        
+        .avatar {
+            /* position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+            /*使用绝对定位居中绕环形旋转时会有偏差，不知道为啥*/
+            display: block;
+            margin: calc(50% - 25px) auto 0;
+            width: 50px;
+            /* height: 50px; 另一个会按比例自动缩放*/
+            border-radius: 25px;
+            animation: spin 3s infinite linear;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>需要一个元素的解决方案</h1>
+    <div class="path">
+        <img src="adamcatlace.jpg" alt="avatar" class="avatar">
+    </div>
+</body>
+
+</html>
